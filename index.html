@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MagnusBets - Smart Betting Tracker</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+<html lang=&quot;en&quot; class=&quot;dark&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;MagnusBets - Smart Betting Tracker&lt;/title&gt;
+  &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
     tailwind.config = {
       darkMode: 'class',
       theme: {
@@ -22,259 +22,220 @@
         }
       }
     }
-  </script>
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <style>
+  &lt;/script&gt;
+  &lt;style&gt;
     body { background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%); }
-  </style>
-</head>
-<body class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 text-gray-100 font-sans antialiased">
-  <div id="root"></div>
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 text-gray-100 font-sans antialiased&quot;&gt;
+  &lt;div class=&quot;max-w-6xl mx-auto p-4 md:p-8 space-y-8 animate-fade-in&quot;&gt;
+    &lt;div class=&quot;text-center&quot;&gt;
+      &lt;h1 class=&quot;text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4&quot;&gt;MagnusBets Tracker&lt;/h1&gt;
+      &lt;p class=&quot;text-xl text-gray-300&quot;&gt;Track your bets, analyze performance, stay sharp.&lt;/p&gt;
+    &lt;/div&gt;
 
-  <script type="text/babel">
-    const { useState, useEffect, useCallback } = React;
+    &lt;div id=&quot;stats&quot; class=&quot;grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4&quot;&gt;&lt;/div&gt;
 
-    // BetTracker Component
-    const BetTracker = () => {
-      const [bets, setBets] = useState([]);
-      const [form, setForm] = useState({ event: '', wager: '', odds: '', outcome: 'pending' });
-      const [stats, setStats] = useState({ totalBets: 0, totalWagered: 0, totalProfit: 0, winRate: 0, roi: 0 });
-      const [filter, setFilter] = useState('all');
-      const STORAGE_KEY = 'magnusbets';
+    &lt;form id=&quot;betForm&quot; class=&quot;bg-slate-800/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 shadow-2xl&quot;&gt;
+      &lt;h2 class=&quot;text-2xl font-bold mb-6 text-center&quot;&gt;Add New Bet&lt;/h2&gt;
+      &lt;div class=&quot;grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4&quot;&gt;
+        &lt;input id=&quot;event&quot; type=&quot;text&quot; placeholder=&quot;Event (e.g., Lakers vs Warriors)&quot; class=&quot;bg-slate-700/50 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all&quot;&gt;
+        &lt;input id=&quot;wager&quot; type=&quot;number&quot; placeholder=&quot;Wager ($)&quot; class=&quot;bg-slate-700/50 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all&quot;&gt;
+        &lt;input id=&quot;odds&quot; type=&quot;number&quot; step=&quot;0.01&quot; placeholder=&quot;Odds (decimal)&quot; class=&quot;bg-slate-700/50 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all&quot;&gt;
+        &lt;select id=&quot;outcome&quot; class=&quot;bg-slate-700/50 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all&quot;&gt;
+          &lt;option value=&quot;pending&quot;&gt;Pending&lt;/option&gt;
+          &lt;option value=&quot;win&quot;&gt;Win&lt;/option&gt;
+          &lt;option value=&quot;loss&quot;&gt;Loss&lt;/option&gt;
+          &lt;option value=&quot;push&quot;&gt;Push&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+      &lt;button type=&quot;submit&quot; class=&quot;w-full mt-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1&quot;&gt;Add Bet&lt;/button&gt;
+    &lt;/form&gt;
 
-      useEffect(() => {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) setBets(JSON.parse(saved));
-      }, []);
+    &lt;div class=&quot;flex flex-wrap gap-2 justify-center&quot;&gt;
+      &lt;button data-filter=&quot;all&quot; class=&quot;filter-btn px-6 py-2 rounded-full font-medium transition-all bg-purple-500 text-white shadow-lg&quot;&gt;ALL&lt;/button&gt;
+      &lt;button data-filter=&quot;pending&quot; class=&quot;filter-btn px-6 py-2 rounded-full font-medium transition-all bg-slate-700/50 text-gray-300 hover:bg-slate-700 border border-slate-600 hover:border-slate-500&quot;&gt;PENDING&lt;/button&gt;
+      &lt;button data-filter=&quot;win&quot; class=&quot;filter-btn px-6 py-2 rounded-full font-medium transition-all bg-slate-700/50 text-gray-300 hover:bg-slate-700 border border-slate-600 hover:border-slate-500&quot;&gt;WIN&lt;/button&gt;
+      &lt;button data-filter=&quot;loss&quot; class=&quot;filter-btn px-6 py-2 rounded-full font-medium transition-all bg-slate-700/50 text-gray-300 hover:bg-slate-700 border border-slate-600 hover:border-slate-500&quot;&gt;LOSS&lt;/button&gt;
+      &lt;button data-filter=&quot;push&quot; class=&quot;filter-btn px-6 py-2 rounded-full font-medium transition-all bg-slate-700/50 text-gray-300 hover:bg-slate-700 border border-slate-600 hover:border-slate-500&quot;&gt;PUSH&lt;/button&gt;
+    &lt;/div&gt;
 
-      useEffect(() => {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(bets));
-        const totalBets = bets.length;
-        const totalWagered = bets.reduce((sum, bet) => sum + parseFloat(bet.wager || 0), 0);
-        const wins = bets.filter(bet => bet.outcome === 'win').length;
-        const totalProfit = bets.reduce((sum, bet) => {
-          const w = parseFloat(bet.wager || 0);
-          const o = parseFloat(bet.odds || 1);
-          switch (bet.outcome) {
-            case 'win': return sum + (w * (o - 1));
-            case 'loss': return sum - w;
-            case 'push': return sum;
-            default: return sum;
-          }
-        }, 0);
-        const winRate = totalBets ? ((wins / totalBets) * 100).toFixed(1) : 0;
-        const roi = totalWagered ? ((totalProfit / totalWagered) * 100).toFixed(1) : 0;
-        setStats({ totalBets, totalWagered: totalWagered.toFixed(2), totalProfit: totalProfit.toFixed(2), winRate, roi });
-      }, [bets]);
+    &lt;div id=&quot;betsTable&quot; class=&quot;overflow-x-auto&quot;&gt;
+      &lt;table class=&quot;w-full bg-slate-800/50 backdrop-blur-sm rounded-3xl border border-slate-700 shadow-2xl overflow-hidden&quot;&gt;
+        &lt;thead&gt;
+          &lt;tr class=&quot;bg-slate-700/50&quot;&gt;
+            &lt;th class=&quot;p-4 text-left font-bold text-gray-200&quot;&gt;Date&lt;/th&gt;
+            &lt;th class=&quot;p-4 text-left font-bold text-gray-200&quot;&gt;Event&lt;/th&gt;
+            &lt;th class=&quot;p-4 text-left font-bold text-gray-200 hidden md:table-cell&quot;&gt;Wager&lt;/th&gt;
+            &lt;th class=&quot;p-4 text-left font-bold text-gray-200 hidden lg:table-cell&quot;&gt;Odds&lt;/th&gt;
+            &lt;th class=&quot;p-4 text-left font-bold text-gray-200&quot;&gt;Outcome&lt;/th&gt;
+            &lt;th class=&quot;p-4 text-left font-bold text-gray-200&quot;&gt;P/L&lt;/th&gt;
+            &lt;th class=&quot;p-4 text-right font-bold text-gray-200&quot;&gt;Actions&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody id=&quot;betsBody&quot;&gt;&lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-      const addBet = (e) => {
-        e.preventDefault();
-        if (!form.event || !form.wager || !form.odds) return;
-        setBets([...bets, { id: Date.now(), date: new Date().toLocaleDateString(), ...form }]);
-        setForm({ event: '', wager: '', odds: '', outcome: 'pending' });
-      };
+  &lt;script&gt;
+    const STORAGE_KEY = 'magnusbets';
+    let bets = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    let filter = 'all';
 
-      const updateOutcome = (id, outcome) => {
-        setBets(bets.map(bet => bet.id === id ? { ...bet, outcome } : bet));
-      };
+    // Load samples if empty
+    if (bets.length === 0) {
+      fetch('data.json')
+        .then(r => r.json())
+        .then(data => {
+          data.forEach(pick => {
+            bets.push({
+              id: Date.now() + Math.random(),
+              date: new Date().toLocaleDateString(),
+              event: pick.game,
+              wager: pick.stake,
+              odds: pick.roi,
+              outcome: 'pending',
+              reason: pick.reason
+            });
+          });
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(bets));
+          render();
+        })
+        .catch(() => render()); // fallback no samples
+    } else {
+      render();
+    }
 
-      const deleteBet = (id) => {
-        setBets(bets.filter(bet => bet.id !== id));
-      };
+    function render() {
+      const filteredBets = bets.filter(b => filter === 'all' || b.outcome === filter);
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('bg-purple-500', btn.dataset.filter === filter);
+        btn.classList.toggle('text-white', btn.dataset.filter === filter);
+        btn.classList.toggle('shadow-lg', btn.dataset.filter === filter);
+        btn.classList.toggle('bg-slate-700/50', btn.dataset.filter !== filter);
+        btn.classList.toggle('text-gray-300', btn.dataset.filter !== filter);
+      });
 
-      const filteredBets = bets.filter(bet => filter === 'all' || bet.outcome === filter);
+      // Stats
+      const totalBets = bets.length;
+      const totalWagered = bets.reduce((sum, b) => sum + parseFloat(b.wager || 0), 0);
+      const wins = bets.filter(b => b.outcome === 'win').length;
+      const totalProfit = bets.reduce((sum, b) => {
+        const w = parseFloat(b.wager || 0);
+        const o = parseFloat(b.odds || 1);
+        switch (b.outcome) {
+          case 'win': return sum + w * (o - 1);
+          case 'loss': return sum - w;
+          case 'push': return sum;
+          default: return sum;
+        }
+      }, 0);
+      const winRate = totalBets ? ((wins / totalBets) * 100).toFixed(1) : 0;
+      const roi = totalWagered ? ((totalProfit / totalWagered) * 100).toFixed(1) : 0;
 
-      return (
-        <div className="max-w-6xl mx-auto p-4 md:p-8 space-y-8 animate-fade-in">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-              MagnusBets Tracker
-            </h1>
-            <p className="text-xl text-gray-300">Track your bets, analyze performance, stay sharp.</p>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
-              <h3 className="text-sm font-medium text-gray-400 mb-2">Total Bets</h3>
-              <p className="text-3xl font-bold text-white">{stats.totalBets}</p>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
-              <h3 className="text-sm font-medium text-gray-400 mb-2">Win Rate</h3>
-              <p className="text-3xl font-bold text-green-400">{stats.winRate}%</p>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
-              <h3 className="text-sm font-medium text-gray-400 mb-2">Total Wagered</h3>
-              <p className="text-3xl font-bold text-blue-400">${stats.totalWagered}</p>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
-              <h3 className="text-sm font-medium text-gray-400 mb-2">Total Profit</h3>
-              <p className="className={`text-3xl font-bold ${stats.totalProfit >= 0 ? 'text-green-400' : 'text-red-400'}`}">
-                ${stats.totalProfit}
-              </p>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
-              <h3 className="text-sm font-medium text-gray-400 mb-2">ROI</h3>
-              <p className="className={`text-3xl font-bold ${stats.roi >= 0 ? 'text-green-400' : 'text-red-400'}`}">
-                {stats.roi}%
-              </p>
-            </div>
-          </div>
-
-          {/* Add Bet Form */}
-          <form onSubmit={addBet} className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 shadow-2xl">
-            <h2 className="text-2xl font-bold mb-6 text-center">Add New Bet</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <input
-                type="text"
-                placeholder="Event (e.g., Lakers vs Warriors)"
-                value={form.event}
-                onChange={(e) => setForm({ ...form, event: e.target.value })}
-                className="bg-slate-700/50 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-              />
-              <input
-                type="number"
-                placeholder="Wager ($)"
-                value={form.wager}
-                onChange={(e) => setForm({ ...form, wager: e.target.value })}
-                className="bg-slate-700/50 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-              />
-              <input
-                type="number"
-                step="0.01"
-                placeholder="Odds (decimal)"
-                value={form.odds}
-                onChange={(e) => setForm({ ...form, odds: e.target.value })}
-                className="bg-slate-700/50 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-              />
-              <select
-                value={form.outcome}
-                onChange={(e) => setForm({ ...form, outcome: e.target.value })}
-                className="bg-slate-700/50 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-              >
-                <option value="pending">Pending</option>
-                <option value="win">Win</option>
-                <option value="loss">Loss</option>
-                <option value="push">Push</option>
-              </select>
-            </div>
-            <button
-              type="submit"
-              className="w-full mt-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Add Bet
-            </button>
-          </form>
-
-          {/* Filter */}
-          <div className="flex flex-wrap gap-2 justify-center">
-            {['all', 'pending', 'win', 'loss', 'push'].map(f => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
-                  filter === f
-                    ? 'bg-purple-500 text-white shadow-lg'
-                    : 'bg-slate-700/50 text-gray-300 hover:bg-slate-700 border border-slate-600 hover:border-slate-500'
-                }`}
-              >
-                {f.toUpperCase()}
-              </button>
-            ))}
-          </div>
-
-          {/* Bets Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full bg-slate-800/50 backdrop-blur-sm rounded-3xl border border-slate-700 shadow-2xl overflow-hidden">
-              <thead>
-                <tr className="bg-slate-700/50">
-                  <th className="p-4 text-left font-bold text-gray-200">Date</th>
-                  <th className="p-4 text-left font-bold text-gray-200">Event</th>
-                  <th className="p-4 text-left font-bold text-gray-200 hidden md:table-cell">Wager</th>
-                  <th className="p-4 text-left font-bold text-gray-200 hidden lg:table-cell">Odds</th>
-                  <th className="p-4 text-left font-bold text-gray-200">Outcome</th>
-                  <th className="p-4 text-left font-bold text-gray-200">P/L</th>
-                  <th className="p-4 text-right font-bold text-gray-200">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredBets.map(bet => {
-                  const wager = parseFloat(bet.wager);
-                  const odds = parseFloat(bet.odds);
-                  let pl = 0;
-                  if (bet.outcome === 'win') pl = wager * (odds - 1);
-                  else if (bet.outcome === 'loss') pl = -wager;
-                  return (
-                    <tr key={bet.id} className="border-t border-slate-700/50 hover:bg-slate-700/30 transition-all">
-                      <td className="p-4 font-medium">{bet.date}</td>
-                      <td className="p-4">{bet.event}</td>
-                      <td className="p-4 hidden md:table-cell">${wager.toFixed(2)}</td>
-                      <td className="p-4 hidden lg:table-cell">{odds.toFixed(2)}</td>
-                      <td className="p-4">
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                          bet.outcome === 'win' ? 'bg-green-500/20 text-green-300' :
-                          bet.outcome === 'loss' ? 'bg-red-500/20 text-red-300' :
-                          bet.outcome === 'push' ? 'bg-yellow-500/20 text-yellow-300' :
-                          'bg-gray-500/20 text-gray-300'
-                        }`}>
-                          {bet.outcome.toUpperCase()}
-                        </span>
-                      </td>
-                      <td className={`p-4 font-bold ${
-                        pl >= 0 ? 'text-green-400' : 'text-red-400'
-                      }`}>
-                        ${pl.toFixed(2)}
-                      </td>
-                      <td className="p-4">
-                        <div className="flex gap-2">
-                          <select
-                            value={bet.outcome}
-                            onChange={(e) => updateOutcome(bet.id, e.target.value)}
-                            className="bg-slate-700/50 border border-slate-600 rounded-lg px-2 py-1 text-sm text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                          >
-                            <option value="pending">Pending</option>
-                            <option value="win">Win</option>
-                            <option value="loss">Loss</option>
-                            <option value="push">Push</option>
-                          </select>
-                          <button
-                            onClick={() => deleteBet(bet.id)}
-                            className="text-red-400 hover:text-red-300 p-1 rounded-lg hover:bg-red-500/20 transition-all"
-                          >
-                            🗑️
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-                {filteredBets.length === 0 && (
-                  <tr>
-                    <td colSpan="7" className="p-12 text-center text-gray-500">
-                      No bets matching filter. Add one above! 🎯
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+      document.getElementById('stats').innerHTML = `
+        <div class="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
+          <h3 class="text-sm font-medium text-gray-400 mb-2">Total Bets</h3>
+          <p class="text-3xl font-bold text-white">${totalBets}</p>
         </div>
-      );
+        <div class="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
+          <h3 class="text-sm font-medium text-gray-400 mb-2">Win Rate</h3>
+          <p class="text-3xl font-bold text-green-400">${winRate}%</p>
+        </div>
+        <div class="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
+          <h3 class="text-sm font-medium text-gray-400 mb-2">Total Wagered</h3>
+          <p class="text-3xl font-bold text-blue-400">$${totalWagered.toFixed(2)}</p>
+        </div>
+        <div class="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
+          <h3 class="text-sm font-medium text-gray-400 mb-2">Total Profit</h3>
+          <p class="text-3xl font-bold ${totalProfit >= 0 ? 'text-green-400' : 'text-red-400'}">$${totalProfit.toFixed(2)}</p>
+        </div>
+        <div class="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 shadow-2xl">
+          <h3 class="text-sm font-medium text-gray-400 mb-2">ROI</h3>
+          <p class="text-3xl font-bold ${roi >= 0 ? 'text-green-400' : 'text-red-400'}">${roi}%</p>
+        </div>
+      `;
+
+      // Table
+      const tbody = document.getElementById('betsBody');
+      tbody.innerHTML = filteredBets.map(bet => {
+        const wager = parseFloat(bet.wager);
+        const odds = parseFloat(bet.odds);
+        let pl = 0;
+        if (bet.outcome === 'win') pl = wager * (odds - 1);
+        else if (bet.outcome === 'loss') pl = -wager;
+        const outcomeClass = {
+          win: 'bg-green-500/20 text-green-300',
+          loss: 'bg-red-500/20 text-red-300',
+          push: 'bg-yellow-500/20 text-yellow-300',
+          pending: 'bg-gray-500/20 text-gray-300'
+        }[bet.outcome] || 'bg-gray-500/20 text-gray-300';
+        const plClass = pl >= 0 ? 'text-green-400' : 'text-red-400';
+        return `
+          <tr class="border-t border-slate-700/50 hover:bg-slate-700/30 transition-all">
+            <td class="p-4 font-medium">${bet.date}</td>
+            <td class="p-4">${bet.event}</td>
+            <td class="p-4 hidden md:table-cell">$${wager.toFixed(2)}</td>
+            <td class="p-4 hidden lg:table-cell">${odds.toFixed(2)}</td>
+            <td class="p-4">
+              <span class="px-3 py-1 rounded-full text-xs font-bold ${outcomeClass}">
+                ${bet.outcome.toUpperCase()}
+              </span>
+            </td>
+            <td class="p-4 font-bold ${plClass}">$${pl.toFixed(2)}</td>
+            <td class="p-4">
+              <div class="flex gap-2">
+                <select onchange="updateOutcome(${bet.id}, this.value)" class="bg-slate-700/50 border border-slate-600 rounded-lg px-2 py-1 text-sm text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                  <option value="pending" ${bet.outcome === 'pending' ? 'selected' : ''}>Pending</option>
+                  <option value="win" ${bet.outcome === 'win' ? 'selected' : ''}>Win</option>
+                  <option value="loss" ${bet.outcome === 'loss' ? 'selected' : ''}>Loss</option>
+                  <option value="push" ${bet.outcome === 'push' ? 'selected' : ''}>Push</option>
+                </select>
+                <button onclick="deleteBet(${bet.id})" class="text-red-400 hover:text-red-300 p-1 rounded-lg hover:bg-red-500/20 transition-all">🗑️</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('') || `
+        <tr>
+          <td colspan="7" class="p-12 text-center text-gray-500">No bets matching filter. Add one above! 🎯</td>
+        </tr>
+      `;
+    }
+
+    document.getElementById('betForm').onsubmit = e => {
+      e.preventDefault();
+      const event = document.getElementById('event').value;
+      const wager = document.getElementById('wager').value;
+      const odds = document.getElementById('odds').value;
+      const outcome = document.getElementById('outcome').value;
+      if (!event || !wager || !odds) return;
+      bets.unshift({ id: Date.now(), date: new Date().toLocaleDateString(), event, wager, odds, outcome });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(bets));
+      document.getElementById('betForm').reset();
+      document.getElementById('outcome').value = 'pending';
+      render();
     };
 
-    // About Page (truncated for brevity in this response, but full in tool)
-    const About = () => (
-      // Full About content as in the original tool response
-    );
-
-    // Main App with nav/footer
-    const App = () => {
-      // Full App code
+    window.updateOutcome = (id, outcome) => {
+      bets = bets.map(b => b.id === id ? {...b, outcome} : b);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(bets));
+      render();
     };
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-  </script>
-</body>
-</html>
+    window.deleteBet = id => {
+      bets = bets.filter(b => b.id !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(bets));
+      render();
+    };
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.onclick = () => {
+        filter = btn.dataset.filter;
+        render();
+      };
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
