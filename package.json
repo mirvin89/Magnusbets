@@ -1,0 +1,25 @@
+{
+  "name": "magnusbets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild app.jsx --bundle --format=iife --platform=browser --outfile=app.js --jsx-factory=React.createElement --jsx-fragment=React.Fragment --external:React --external:ReactDOM --minify",
+  "preview": "npx serve . --listen tcp://0.0.0.0:3000",
+  "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mirvin89/Magnusbets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mirvin89/Magnusbets/issues"
+  },
+  "homepage": "https://github.com/mirvin89/Magnusbets#readme",
+  "devDependencies": {
+    "esbuild": "^0.27.3"
+  }
+}
