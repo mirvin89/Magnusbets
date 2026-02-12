@@ -1,38 +1,77 @@
 'use client'
 
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <nav className="border-b border-purple-900/20 bg-purple-950/50 backdrop-blur-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed w-full top-0 z-50 glass border-b border-accent-gold/10">
+      <div className="container-premium">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-playfair font-bold text-white hover:text-purple-400 transition-colors">
-            MagnusBets
+          <Link 
+            href="/" 
+            className="text-2xl font-playfair font-bold text-gradient hover:opacity-80 transition-opacity"
+          >
+            MB
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/track-record" className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium">
-              Results
-            </Link>
-            <Link href="/picks" className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium">
-              Picks
-            </Link>
-            <Link href="/about" className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium">
-              About
-            </Link>
-            <Link href="/pricing" className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium">
-              Pricing
-            </Link>
+          {/* Navigation Links - Desktop */}
+          <div className="hidden md:flex items-center space-x-1">
+            {[
+              { href: '/track-record', label: 'Results' },
+              { href: '/picks', label: 'Picks' },
+              { href: '/about', label: 'About' },
+              { href: '/pricing', label: 'Pricing' },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-4 py-2 text-gray-300 hover:text-accent-gold transition-colors text-sm font-medium relative group"
+              >
+                {link.label}
+                <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-accent-gold to-accent-amber scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+              </Link>
+            ))}
           </div>
 
           {/* Sign In Button */}
-          <button className="px-6 py-2 text-purple-400 hover:text-purple-300 font-medium text-sm border border-purple-700/50 hover:border-purple-500 rounded-lg transition-colors">
+          <button className="btn-secondary text-sm px-6 py-2">
             Sign In
           </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-accent-gold hover:text-accent-amber transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden pb-4 border-t border-accent-gold/10 animate-fade-in">
+            {[
+              { href: '/track-record', label: 'Results' },
+              { href: '/picks', label: 'Picks' },
+              { href: '/about', label: 'About' },
+              { href: '/pricing', label: 'Pricing' },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block px-4 py-3 text-gray-300 hover:text-accent-gold transition-colors text-sm font-medium"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </nav>
   )

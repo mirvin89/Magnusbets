@@ -4,62 +4,119 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-amber-900/20 bg-slate-950 text-gray-400">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer className="relative border-t border-accent-gold/10 mt-20">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-premium-dark via-transparent to-transparent opacity-50 pointer-events-none"></div>
+
+      <div className="container-premium relative z-10 py-16 md:py-24">
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 mb-12">
           {/* Brand */}
-          <div>
-            <h3 className="text-white font-playfair font-bold text-xl mb-4">MagnusBets</h3>
-            <p className="text-sm text-gray-500">Quantitative NBA picks with verified results. Professional-grade models, transparent methodology.</p>
+          <div className="md:col-span-2">
+            <Link href="/" className="text-2xl font-playfair font-bold text-gradient mb-4 inline-block">
+              MB
+            </Link>
+            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+              Quantitative NBA picks with verified results. Professional-grade models, transparent methodology, zero AI hype.
+            </p>
+            <div className="flex space-x-4">
+              {[
+                { icon: 'Twitter', href: '#' },
+                { icon: 'Discord', href: '#' },
+                { icon: 'Email', href: '#' },
+              ].map((social) => (
+                <a
+                  key={social.icon}
+                  href={social.href}
+                  className="w-10 h-10 rounded-full glass border-accent-gold/20 flex items-center justify-center text-accent-gold hover:text-accent-amber hover:border-accent-gold/50 transition-all duration-300"
+                  aria-label={social.icon}
+                >
+                  <span className="text-xs font-bold">↗</span>
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Product */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Product</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/picks" className="hover:text-amber-500 transition-colors">Today's Picks</Link></li>
-              <li><Link href="/track-record" className="hover:text-amber-500 transition-colors">Track Record</Link></li>
-              <li><Link href="/pricing" className="hover:text-amber-500 transition-colors">Pricing</Link></li>
+            <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Product</h4>
+            <ul className="space-y-3 text-sm">
+              {[
+                { href: '/picks', label: 'Today\'s Picks' },
+                { href: '/track-record', label: 'Track Record' },
+                { href: '/pricing', label: 'Pricing' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-accent-gold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/about" className="hover:text-amber-500 transition-colors">About</Link></li>
-              <li><a href="#" className="hover:text-amber-500 transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-amber-500 transition-colors">Contact</a></li>
+            <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Company</h4>
+            <ul className="space-y-3 text-sm">
+              {[
+                { href: '/about', label: 'About' },
+                { href: '#', label: 'Blog' },
+                { href: '#', label: 'Contact' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-accent-gold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-amber-500 transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-amber-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-amber-500 transition-colors">Disclaimer</a></li>
+            <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Legal</h4>
+            <ul className="space-y-3 text-sm">
+              {[
+                { href: '#', label: 'Terms' },
+                { href: '#', label: 'Privacy' },
+                { href: '#', label: 'Disclaimer' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-accent-gold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-amber-900/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-500">© 2026 MagnusBets. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-500 hover:text-amber-500 transition-colors">Twitter</a>
-              <a href="#" className="text-gray-500 hover:text-amber-500 transition-colors">Discord</a>
-              <a href="#" className="text-gray-500 hover:text-amber-500 transition-colors">Email</a>
-            </div>
+        <div className="border-t border-accent-gold/10 pt-8 mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-gray-500">
+              © 2026 MagnusBets. All rights reserved.
+            </p>
+            <p className="text-sm text-gray-500">
+              Built with precision. Proven with data.
+            </p>
           </div>
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-8 p-4 bg-slate-800/30 border border-amber-900/20 rounded-lg">
-          <p className="text-xs text-gray-500">
-            <strong>Disclaimer:</strong> Past performance does not guarantee future results. Betting carries risk. Please gamble responsibly and consult local regulations.
+        <div className="card-premium bg-gradient-to-r from-accent-gold/5 to-accent-amber/5 p-4">
+          <p className="text-xs text-gray-400 leading-relaxed">
+            <strong className="text-accent-gold">Disclaimer:</strong> Past performance does not guarantee future results. Betting involves risk. Please gamble responsibly and consult local regulations.
           </p>
         </div>
       </div>
