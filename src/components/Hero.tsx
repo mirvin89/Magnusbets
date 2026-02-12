@@ -1,53 +1,57 @@
-import React from 'react';
+'use client'
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <div className="relative overflow-hidden bg-white text-gray-900">
-      <div className="absolute inset-0 bg-grid-gray/5 bg-grid-16"></div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            <span className="text-gray-900">
-              Data‑Driven NBA Picks
-            </span>
-            <br />
-            <span className="text-3xl md:text-5xl lg:text-6xl font-light text-gray-700">With Proven Results</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10">
-            Join professional bettors using quantitative models to beat the books.
-            <span className="block text-green-600 font-semibold mt-2">
-              Verified 24.2% ROI · 72.9% Win Rate · $24,200 Profit
-            </span>
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-2xl shadow-xl hover:shadow-gray-900/20 transition-all duration-300 transform hover:-translate-y-1">
-              Get Today's Picks – Free During Beta
-            </button>
-            <button className="px-8 py-4 bg-white hover:bg-gray-50 border border-gray-300 text-gray-800 font-bold rounded-2xl shadow-md hover:shadow-gray-300/30 transition-all duration-300">
-              See Live Track Record
-            </button>
+    <section className="relative overflow-hidden pt-20 pb-32">
+      {/* Background accent */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl opacity-20"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Badge */}
+        <div className="inline-block mb-8">
+          <span className="px-4 py-2 rounded-full bg-amber-900/30 border border-amber-700/50 text-amber-300 text-sm font-medium">
+            ✨ 24.2% Average ROI • 72.9% Win Rate
+          </span>
+        </div>
+
+        {/* Main Heading */}
+        <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+          Quantitative NBA Picks
+          <span className="block text-amber-500">With Proven Results</span>
+        </h1>
+
+        {/* Subheading */}
+        <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+          Professional-grade models backed by verified track record. No AI hype. Just data.
+        </p>
+
+        {/* Key Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
+          <div className="bg-slate-800/50 border border-amber-700/30 rounded-2xl p-6 backdrop-blur">
+            <div className="text-4xl font-bold text-amber-500 mb-2">72.9%</div>
+            <div className="text-gray-400 text-sm">Win Rate</div>
           </div>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-gray-50/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-200">
-              <div className="text-3xl font-bold text-green-600">72.9%</div>
-              <div className="text-gray-600 mt-2">Win Rate</div>
-              <div className="text-sm text-gray-500">Across 418 tracked bets</div>
-            </div>
-            <div className="bg-gray-50/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-200">
-              <div className="text-3xl font-bold text-green-600">24.2%</div>
-              <div className="text-gray-600 mt-2">ROI</div>
-              <div className="text-sm text-gray-500">Average return on investment</div>
-            </div>
-            <div className="bg-gray-50/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-200">
-              <div className="text-3xl font-bold text-green-600">+$24.2k</div>
-              <div className="text-gray-600 mt-2">Total Profit</div>
-              <div className="text-sm text-gray-500">Since 2022‑23 season</div>
-            </div>
+          <div className="bg-slate-800/50 border border-amber-700/30 rounded-2xl p-6 backdrop-blur">
+            <div className="text-4xl font-bold text-amber-500 mb-2">+24.2%</div>
+            <div className="text-gray-400 text-sm">Average ROI</div>
+          </div>
+          <div className="bg-slate-800/50 border border-amber-700/30 rounded-2xl p-6 backdrop-blur">
+            <div className="text-4xl font-bold text-amber-500 mb-2">418</div>
+            <div className="text-gray-400 text-sm">Tracked Bets</div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default Hero;
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button className="px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold rounded-lg transition-all shadow-lg hover:shadow-2xl transform hover:scale-105">
+            Get Today's Picks – Free During Beta
+          </button>
+          <button className="px-8 py-4 border border-amber-700/50 hover:border-amber-500/80 text-amber-400 hover:text-amber-300 font-bold rounded-lg transition-all hover:bg-slate-800/50">
+            See Live Track Record
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}

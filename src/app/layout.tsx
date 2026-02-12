@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
 
 export const metadata: Metadata = {
-  title: 'MagnusBets - Data‑Driven NBA Picks',
-  description: 'Professional‑grade quantitative models for NBA betting. Verified track record, transparent methodology.',
+  title: 'MagnusBets - Quantitative NBA Picks with Verified Results',
+  description: 'Professional-grade quantitative models for NBA betting. Transparent methodology, verified track record.',
 }
 
 export default function RootLayout({
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body className={`${inter.className} min-h-screen bg-white text-gray-900 font-sans antialiased`}>
+      <body className={`${inter.className} ${playfair.variable} min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white font-sans antialiased`}>
         <Navbar />
         <main className="min-h-screen">
           {children}

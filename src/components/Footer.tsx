@@ -1,59 +1,68 @@
-import React from 'react';
+'use client'
 
-const Footer = () => {
+import Link from 'next/link'
+
+export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
-            <div className="font-bold text-2xl mb-4 text-gray-900">
-              MagnusBets
-            </div>
-            <p className="text-gray-600 max-w-md">
-              Quantitative sports betting picks powered by statistical models.
-              We provide actionable NBA predictions with verified track record.
-            </p>
-            <div className="mt-6 flex space-x-4">
-              <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
-                Twitter
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
-                Discord
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
-                Telegram
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
-                Contact
-              </a>
-            </div>
-          </div>
+    <footer className="border-t border-amber-900/20 bg-slate-950 text-gray-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
           <div>
-            <h3 className="text-gray-900 font-bold mb-4">Product</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Today's Picks</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Track Record</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">FAQ</a></li>
+            <h3 className="text-white font-playfair font-bold text-xl mb-4">MagnusBets</h3>
+            <p className="text-sm text-gray-500">Quantitative NBA picks with verified results. Professional-grade models, transparent methodology.</p>
+          </div>
+
+          {/* Product */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Product</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/picks" className="hover:text-amber-500 transition-colors">Today's Picks</Link></li>
+              <li><Link href="/track-record" className="hover:text-amber-500 transition-colors">Track Record</Link></li>
+              <li><Link href="/pricing" className="hover:text-amber-500 transition-colors">Pricing</Link></li>
             </ul>
           </div>
+
+          {/* Company */}
           <div>
-            <h3 className="text-gray-900 font-bold mb-4">Legal</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Disclaimer</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Responsible Gambling</a></li>
+            <h4 className="text-white font-semibold mb-4">Company</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/about" className="hover:text-amber-500 transition-colors">About</Link></li>
+              <li><a href="#" className="hover:text-amber-500 transition-colors">Blog</a></li>
+              <li><a href="#" className="hover:text-amber-500 transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Legal</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="hover:text-amber-500 transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-amber-500 transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-amber-500 transition-colors">Disclaimer</a></li>
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-gray-300 text-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} MagnusBets. All rights reserved. This site is for informational purposes only. Must be 21+ to gamble.</p>
-          <p className="mt-2">Odds subject to change. Past performance does not guarantee future results.</p>
+
+        {/* Divider */}
+        <div className="border-t border-amber-900/20 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-gray-500">© 2026 MagnusBets. All rights reserved.</p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-gray-500 hover:text-amber-500 transition-colors">Twitter</a>
+              <a href="#" className="text-gray-500 hover:text-amber-500 transition-colors">Discord</a>
+              <a href="#" className="text-gray-500 hover:text-amber-500 transition-colors">Email</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="mt-8 p-4 bg-slate-800/30 border border-amber-900/20 rounded-lg">
+          <p className="text-xs text-gray-500">
+            <strong>Disclaimer:</strong> Past performance does not guarantee future results. Betting carries risk. Please gamble responsibly and consult local regulations.
+          </p>
         </div>
       </div>
     </footer>
-  );
-};
-
-export default Footer;
+  )
+}
