@@ -62,41 +62,65 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Card Styles */
 .card-premium {
-  @apply bg-gradient-to-br from-premium-navy/60 to-premium-slate/40 border border-accent-gold/10 rounded-2xl backdrop-blur-xl overflow-hidden;
+  background: linear-gradient(135deg, rgba(26, 31, 58, 0.6) 0%, rgba(45, 55, 72, 0.4) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-premium:hover {
-  @apply border-accent-gold/30 shadow-glow-amber;
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
   transform: translateY(-4px);
 }
 
 /* Button Styles */
 .btn-primary {
-  @apply px-8 py-3 bg-gradient-to-r from-accent-gold via-accent-amber to-accent-gold text-premium-dark font-bold rounded-xl transition-all duration-300;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(to right, #d4af37, #fbbf24, #d4af37);
+  color: #0a0e27;
+  font-weight: bold;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
   box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
 }
 
 .btn-primary:hover {
-  @apply shadow-lg;
-  transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  @apply px-8 py-3 border-2 border-accent-gold/40 text-accent-gold hover:text-accent-amber font-bold rounded-xl transition-all duration-300 hover:border-accent-gold/70 hover:bg-accent-gold/5;
+  padding: 0.75rem 2rem;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  color: #d4af37;
+  font-weight: bold;
+  border-radius: 0.75rem;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .btn-secondary:hover {
+  border-color: rgba(212, 175, 55, 0.7);
+  color: #fbbf24;
+  background-color: rgba(212, 175, 55, 0.05);
   transform: translateY(-2px);
 }
 
 /* Stat Card */
 .stat-card {
-  @apply relative overflow-hidden rounded-2xl;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  padding: 1.5rem;
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(251, 191, 36, 0.02) 100%);
   border: 1px solid rgba(212, 175, 55, 0.15);
-  padding: 1.5rem;
 }
 
 .stat-card::before {
@@ -120,15 +144,44 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glassmorphism */
 .glass {
-  @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Section Spacing */
 .section-padding {
-  @apply py-20 md:py-32;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
 }
 
 /* Container */
 .container-premium {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-premium {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-premium {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
