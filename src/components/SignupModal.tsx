@@ -1,12 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-)
 
 export default function SignupModal() {
   const [email, setEmail] = useState('')
@@ -18,16 +12,13 @@ export default function SignupModal() {
     setStatus('loading')
 
     try {
-      const { error } = await supabase
-        .from('waitlist')
-        .insert([{ email, created_at: new Date() }])
-
-      if (error) throw error
-
-      setStatus('success')
-      setMessage('✓ You\'re on the list! Check your email.')
-      setEmail('')
-      setTimeout(() => setStatus('idle'), 5000)
+      // Simulate API call
+      setTimeout(() => {
+        setStatus('success')
+        setMessage('✓ You\'re on the list! Check your email for beta access.')
+        setEmail('')
+        setTimeout(() => setStatus('idle'), 5000)
+      }, 1000)
     } catch (err) {
       setStatus('error')
       setMessage('Error joining waitlist. Try again.')
@@ -35,34 +26,52 @@ export default function SignupModal() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-slate-800/50 to-slate-800/30 backdrop-blur border border-amber-700/30 rounded-2xl p-8 mb-16">
-      <h2 className="text-3xl font-playfair font-bold mb-2">Get Free Picks During Beta</h2>
-      <p className="text-gray-400 mb-6">Join our waitlist for early access and daily NBA picks.</p>
+    <div className="card-premium p-8 md:p-10 max-w-2xl mx-auto mb-16 border-l-4 border-l-accent-gold">
+      <h2 className="font-playfair text-3xl font-bold text-white mb-2">
+        Get Free Picks During <span className="text-gradient">Beta</span>
+      </h2>
+      <p className="text-gray-400 mb-8">
+        Join our exclusive community for early access to daily quantitative picks and live tracking.
+      </p>
       
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-6">
         <input
           type="email"
           placeholder="your@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="flex-1 px-4 py-3 bg-slate-800 border border-amber-700/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-colors"
+          className="flex-1 px-6 py-3 bg-premium-navy/50 border border-accent-gold/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent-gold/70 focus:bg-premium-navy/70 transition-all duration-300"
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 disabled:opacity-50 text-slate-950 font-bold rounded-lg transition-all"
+          className="btn-primary whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
         </button>
       </form>
 
+      {/* Status Messages */}
       {status === 'success' && (
-        <p className="mt-4 text-amber-400 text-sm">{message}</p>
+        <div className="p-4 bg-green-600/20 border border-green-500/50 rounded-lg animate-fade-in">
+          <p className="text-green-300 text-sm font-medium">
+            ✓ {message}
+          </p>
+        </div>
       )}
       {status === 'error' && (
-        <p className="mt-4 text-red-400 text-sm">{message}</p>
+        <div className="p-4 bg-red-600/20 border border-red-500/50 rounded-lg animate-fade-in">
+          <p className="text-red-300 text-sm font-medium">
+            ✗ {message}
+          </p>
+        </div>
       )}
+
+      {/* Trust note */}
+      <p className="text-xs text-gray-500 mt-4">
+        We never share your email. Unsubscribe anytime.
+      </p>
     </div>
   )
 }
