@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} ${playfair.variable} min-h-screen bg-slate-950 text-white font-sans antialiased`}>
+      <body className={`${inter.className} ${playfair.variable} min-h-screen bg-gradient-to-br from-purple-950 via-slate-950 to-purple-950 text-white font-sans antialiased`}>
         <Navbar />
         <main className="min-h-screen">
           {children}
