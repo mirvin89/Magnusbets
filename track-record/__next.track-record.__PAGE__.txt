@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[9963,["/_next/static/chunks/ce93ace076ebc68a.js","/_next/static/chunks/072979405047ef95.js"],"default"]
+3:I[90869,["/_next/static/chunks/b6da7c12fe0dbe9a.js","/_next/static/chunks/ad44470420ff4faf.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"buildId":"bURMS0VpyCHQM9BwckDTO","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen","children":["$","div",null,{"className":"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"Track Record"}],["$","p",null,{"className":"text-gray-400 mb-8","children":"Transparent performance metrics across all our models and bet types."}],["$","$L2",null,{}]]}]}],[["$","script","script-0",{"src":"/_next/static/chunks/072979405047ef95.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null

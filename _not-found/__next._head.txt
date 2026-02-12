@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[90869,["/_next/static/chunks/ce93ace076ebc68a.js","/_next/static/chunks/ad44470420ff4faf.js"],"ViewportBoundary"]
+3:I[90869,["/_next/static/chunks/ce93ace076ebc68a.js","/_next/static/chunks/ad44470420ff4faf.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+0:{"buildId":"bURMS0VpyCHQM9BwckDTO","rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"MagnusBets - AI‑Powered NBA Picks"}],["$","meta","1",{"name":"description","content":"Beat the books with machine‑learning NBA predictions. Verified 24.2% ROI, 72.9% win rate."}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
