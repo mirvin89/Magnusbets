@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="light">
-      <body className={`${inter.className} ${playfair.variable} min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white font-sans antialiased`}>
+    <html lang="en" className="dark">
+      <body className={`${inter.className} ${playfair.variable} min-h-screen bg-slate-950 text-white font-sans antialiased`}>
         <Navbar />
         <main className="min-h-screen">
           {children}
