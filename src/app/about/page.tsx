@@ -1,70 +1,146 @@
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-bold mb-6 text-gray-900">How It Works</h1>
-        <p className="text-gray-600 mb-8">We combine quantitative models with rigorous backtesting to deliver actionable betting insights.</p>
-        
-        <div className="space-y-12">
-          <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-            <h2 className="text-2xl font-bold mb-4 text-green-600">The Data Pipeline</h2>
-            <p className="text-gray-700 mb-4">Every day, we ingest millions of data points:</p>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700">
-              <li>NBA game statistics (traditional and advanced metrics)</li>
-              <li>Historical odds from multiple sportsbooks</li>
-              <li>Injury reports, lineup changes, and scheduling factors</li>
-              <li>Market movement and betting volume</li>
-            </ul>
+    <div className="min-h-screen pt-32">
+      <div className="container-premium pb-20">
+        {/* Header */}
+        <div className="mb-16 max-w-3xl">
+          <div className="inline-block mb-6 px-4 py-2 rounded-full glass border-accent-gold/30">
+            <p className="text-sm font-medium text-accent-gold">How We Work</p>
           </div>
+          <h1 className="font-playfair text-5xl md:text-6xl font-bold mb-6 text-white">
+            From <span className="text-gradient">Data to Decisions</span>
+          </h1>
+          <p className="text-xl text-gray-400">
+            We combine quantitative models with rigorous backtesting to deliver actionable betting insights. No black boxes, no hype—just pure methodology.
+          </p>
+        </div>
 
-          <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-            <h2 className="text-2xl font-bold mb-4 text-green-600">The Models</h2>
-            <p className="text-gray-700 mb-4">We run five distinct quantitative models, each optimized for a different bet type:</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 p-4 rounded-xl">
-                <h3 className="font-bold text-gray-900">Spread Model</h3>
-                <p className="text-gray-500 text-sm">Logistic regression with rolling averages of point differentials.</p>
-              </div>
-              <div className="bg-gray-100 p-4 rounded-xl">
-                <h3 className="font-bold text-gray-900">Totals Model</h3>
-                <p className="text-gray-500 text-sm">Random forest using pace, offensive/defensive ratings, and recent totals.</p>
-              </div>
-              <div className="bg-gray-100 p-4 rounded-xl">
-                <h3 className="font-bold text-gray-900">Moneyline Model</h3>
-                <p className="text-gray-500 text-sm">Gradient boosting with team strength metrics and rest‑day adjustments.</p>
-              </div>
-              <div className="bg-gray-100 p-4 rounded-xl">
-                <h3 className="font-bold text-gray-900">Player Prop Model</h3>
-                <p className="text-gray-500 text-sm">Neural network analyzing individual player matchups (coming soon).</p>
-              </div>
+        {/* Data Pipeline Section */}
+        <div className="card-premium p-8 md:p-12 mb-12">
+          <div className="flex gap-4 mb-6">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-gold to-accent-amber flex items-center justify-center flex-shrink-0">
+              <span className="text-xl">📊</span>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-2">The Data Pipeline</h2>
+              <p className="text-gray-400">Millions of data points, daily ingestion, full transparency</p>
             </div>
           </div>
-
-          <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-            <h2 className="text-2xl font-bold mb-4 text-green-600">Backtesting & Validation</h2>
-            <p className="text-gray-700 mb-4">Every strategy is rigorously backtested across three NBA seasons (2022‑23 to 2024‑25). We use walk‑forward validation to avoid look‑ahead bias and ensure realistic performance.</p>
-            <div className="flex items-center justify-center mt-6">
-              <div className="text-center">
-                <div className="text-5xl font-bold text-green-600">24.2%</div>
-                <div className="text-gray-500">Average ROI across top strategies</div>
+          <p className="text-gray-300 mb-6">Every single day, our systems ingest and process:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              'NBA game statistics (traditional and advanced metrics)',
+              'Historical odds from multiple sportsbooks',
+              'Injury reports, lineup changes, and scheduling factors',
+              'Market movement and betting volume',
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3 p-4 bg-gradient-to-r from-accent-gold/10 to-accent-amber/5 rounded-xl border border-accent-gold/20">
+                <span className="text-accent-gold font-bold flex-shrink-0">✓</span>
+                <span className="text-gray-300">{item}</span>
               </div>
-              <div className="mx-8 text-gray-300">|</div>
-              <div className="text-center">
-                <div className="text-5xl font-bold text-green-600">72.9%</div>
-                <div className="text-gray-500">Win rate on 418 simulated bets</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-            <h2 className="text-2xl font-bold mb-4 text-green-600">Our Promise</h2>
-            <p className="text-gray-700 mb-4">We believe in transparency. That's why we publish our track record, share our methodology, and never hide behind vague claims.</p>
-            <p className="text-gray-700">We're not a get‑rich‑quick scheme. We're a tool for serious bettors who want an edge. The models are sophisticated, but the output is simple: clear, actionable picks with a proven edge.</p>
+            ))}
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-gray-500 text-sm">Have questions? Reach out on Discord or email support@magnusbets.com</p>
+        {/* Models Section */}
+        <div className="card-premium p-8 md:p-12 mb-12">
+          <div className="flex gap-4 mb-6">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-gold to-accent-amber flex items-center justify-center flex-shrink-0">
+              <span className="text-xl">🧠</span>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-2">Five Specialized Models</h2>
+              <p className="text-gray-400">Each optimized for different bet types and market conditions</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                name: 'Spread Model',
+                desc: 'Logistic regression with rolling averages of point differentials',
+              },
+              {
+                name: 'Totals Model',
+                desc: 'Random forest using pace, offensive/defensive ratings, and recent scores',
+              },
+              {
+                name: 'Moneyline Model',
+                desc: 'Gradient boosting with team strength metrics and rest-day adjustments',
+              },
+              {
+                name: 'Player Props (Beta)',
+                desc: 'Neural network analyzing individual player matchups and usage',
+              },
+            ].map((model, idx) => (
+              <div key={idx} className="p-6 bg-gradient-to-br from-accent-gold/10 to-accent-amber/5 rounded-xl border border-accent-gold/20 hover:border-accent-gold/50 transition-colors">
+                <h3 className="font-bold text-white mb-2 text-lg">{model.name}</h3>
+                <p className="text-gray-400 text-sm">{model.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Backtesting Section */}
+        <div className="card-premium p-8 md:p-12 mb-12">
+          <div className="flex gap-4 mb-6">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-gold to-accent-amber flex items-center justify-center flex-shrink-0">
+              <span className="text-xl">✅</span>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-2">Rigorous Backtesting</h2>
+              <p className="text-gray-400">Walk-forward validation across 3 NBA seasons</p>
+            </div>
+          </div>
+          <p className="text-gray-300 mb-8">
+            Every strategy is rigorously backtested across three full NBA seasons (2022-23 to 2024-25). We use walk-forward validation to avoid look-ahead bias and ensure our historical performance is genuinely predictive, not just curve-fitted to past data.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { metric: '24.2%', label: 'Average ROI', sublabel: 'Across top strategies' },
+              { metric: '72.9%', label: 'Win Rate', sublabel: 'On 418 backtested picks' },
+              { metric: '3 years', label: 'Validation Period', sublabel: 'Full NBA seasons' },
+            ].map((item, idx) => (
+              <div key={idx} className="stat-card">
+                <p className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-3">
+                  {item.label}
+                </p>
+                <p className="text-4xl font-bold text-gradient mb-2">
+                  {item.metric}
+                </p>
+                <p className="text-sm text-gray-500">
+                  {item.sublabel}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Promise Section */}
+        <div className="card-premium p-8 md:p-12 border-l-4 border-l-accent-gold">
+          <div className="flex gap-4 mb-6">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-gold to-accent-amber flex items-center justify-center flex-shrink-0">
+              <span className="text-xl">🎯</span>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-white">Our Promise</h2>
+            </div>
+          </div>
+          <p className="text-gray-300 mb-6">
+            We believe in radical transparency. That's why we publish our complete track record, share our methodology, and never hide behind vague claims or marketing fluff.
+          </p>
+          <p className="text-gray-300">
+            We're not a get-rich-quick scheme. We're a tool for serious bettors who want a real edge. The models are sophisticated, but the output is simple: clear, actionable picks backed by data and a proven track record.
+          </p>
+        </div>
+
+        {/* Contact CTA */}
+        <div className="mt-16 text-center">
+          <p className="text-gray-400 text-lg mb-6">
+            Still have questions about our methodology?
+          </p>
+          <button className="btn-primary">
+            Join Our Discord Community
+          </button>
         </div>
       </div>
     </div>
