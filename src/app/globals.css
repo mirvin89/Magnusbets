@@ -62,65 +62,88 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Card Styles */
 .card-premium {
-  background: linear-gradient(135deg, rgba(26, 31, 58, 0.6) 0%, rgba(45, 55, 72, 0.4) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.1);
-  border-radius: 1rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(26, 31, 58, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .card-premium:hover {
-  border-color: rgba(212, 175, 55, 0.3);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.25);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+  transform: translateY(-2px);
 }
 
 /* Button Styles */
 .btn-primary {
-  padding: 0.75rem 2rem;
-  background: linear-gradient(to right, #d4af37, #fbbf24, #d4af37);
+  padding: 0.875rem 2.25rem;
+  background: linear-gradient(135deg, #d4af37 0%, #fbbf24 100%);
   color: #0a0e27;
-  font-weight: bold;
-  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: rgba(25, 25, 25, 0.04) 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
-  transform: translateY(-2px);
+  transform: scale(1.05);
+  box-shadow: rgba(25, 25, 25, 0.08) 0 0 2px 0, rgba(0, 0, 0, 0.15) 0 6px 8px 0;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
 }
 
 .btn-secondary {
-  padding: 0.75rem 2rem;
-  border: 2px solid rgba(212, 175, 55, 0.4);
-  color: #d4af37;
-  font-weight: bold;
-  border-radius: 0.75rem;
-  background: transparent;
+  padding: 0.875rem 2.25rem;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  color: #fbbf24;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  text-decoration: none;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(212, 175, 55, 0.7);
-  color: #fbbf24;
-  background-color: rgba(212, 175, 55, 0.05);
-  transform: translateY(-2px);
+  border-color: #fbbf24;
+  background-color: rgba(212, 175, 55, 0.1);
+  transform: scale(1.05);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
 }
 
 /* Stat Card */
 .stat-card {
   position: relative;
   overflow: hidden;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(251, 191, 36, 0.02) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+  background: rgba(26, 31, 58, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
 }
 
 .stat-card::before {
@@ -130,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
