@@ -2,10 +2,6 @@ import Link from 'next/link'
 import Hero from '@/components/Hero'
 
 export default function Home() {
-  const openAuth = () => {
-    // This will be triggered by Hero component
-  }
-
   return (
     <>
       <Hero />
@@ -207,12 +203,9 @@ export default function Home() {
                 ))}
               </ul>
 
-              <button onClick={() => {
-                const event = new CustomEvent('openAuth')
-                window.dispatchEvent(event)
-              }} className="btn-primary w-full py-3">
+              <Link href="/auth" className="btn-primary w-full py-3 text-center block">
                 Join Free Beta
-              </button>
+              </Link>
               <p className="text-xs text-gray-500 text-center mt-4">
                 No credit card required. Cancel anytime.
               </p>
@@ -232,12 +225,9 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => {
-              const event = new CustomEvent('openAuth')
-              window.dispatchEvent(event)
-            }} className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+            <Link href="/auth" className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all inline-block">
               Get Started Free →
-            </button>
+            </Link>
             <Link
               href="/track-record"
               className="px-8 py-3 border-2 border-cyan-500/50 text-cyan-300 font-bold rounded-lg hover:border-cyan-400 hover:bg-cyan-500/10 transition-colors"
