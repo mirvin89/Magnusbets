@@ -7,18 +7,18 @@ export default function Home() {
       <Hero />
 
       {/* Features Section */}
-      <section className="section-padding border-y border-accent-gold/10">
+      <section className="py-12 md:py-20 border-y border-accent-gold/10">
         <div className="container-premium">
-          <div className="text-center mb-16 md:mb-20 max-w-2xl mx-auto">
+          <div className="text-center mb-12 md:mb-20 max-w-2xl mx-auto px-4 md:px-0">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-white">
               Why <span className="text-gradient">MagnusBets</span>
             </h2>
-            <p className="text-lg text-gray-400">
+            <p className="text-base md:text-lg text-gray-400">
               Built on a foundation of rigorous quantitative analysis and real-world validation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
             {[
               {
                 icon: '✓',
@@ -44,13 +44,13 @@ export default function Home() {
                 className="card-premium group p-8 border border-accent-gold/10 hover:border-accent-gold/40 transition-all duration-300"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
-                <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center text-2xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-12 md:w-14 h-12 md:h-14 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center text-xl md:text-2xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent-gold transition-colors">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-accent-gold transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-400 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
