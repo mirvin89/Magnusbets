@@ -38,9 +38,9 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <button className="relative px-6 py-2.5 rounded-lg font-medium text-sm overflow-hidden group transition-all duration-300 bg-gradient-to-r from-accent-gold to-accent-amber text-premium-dark hover:shadow-lg hover:shadow-accent-gold/50">
+          <Link href="/auth" className="relative px-6 py-2.5 rounded-lg font-medium text-sm overflow-hidden group transition-all duration-300 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white hover:shadow-lg hover:shadow-cyan-500/50">
             <span className="relative z-10">Join Beta</span>
-          </button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -65,11 +65,17 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-4 py-3 text-gray-300 hover:text-accent-gold transition-colors text-sm font-medium"
+                className="block px-4 py-3 text-gray-300 hover:text-cyan-400 transition-colors text-sm font-medium"
               >
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/auth"
+              className="block px-4 py-3 text-cyan-400 font-medium text-sm border-t border-cyan-500/10"
+            >
+              Join Beta
+            </Link>
           </div>
         )}
       </div>
