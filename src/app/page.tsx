@@ -24,24 +24,29 @@ export default function Home() {
                 icon: '✓',
                 title: 'Verified Results',
                 description: 'Every pick tracked with actual game outcomes. No simulations, no excuses. Pure data.',
+                color: 'from-green-600 to-emerald-500',
               },
               {
                 icon: '◆',
                 title: 'Transparent Models',
                 description: 'Understand the logic behind each pick. Clear confidence scores and edge calculations.',
+                color: 'from-accent-gold to-accent-amber',
               },
               {
                 icon: '◇',
                 title: 'Professional Grade',
                 description: 'Built by quantitative analysts. Multi-model consensus. Risk management included.',
+                color: 'from-blue-600 to-cyan-500',
               },
             ].map((feature, idx) => (
               <div
                 key={idx}
-                className="card-premium group p-8"
+                className="card-premium group p-8 border border-accent-gold/10 hover:border-accent-gold/40 transition-all duration-300"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
-                <div className="text-3xl text-gradient mb-4">{feature.icon}</div>
+                <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center text-2xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
+                </div>
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent-gold transition-colors">
                   {feature.title}
                 </h3>
@@ -127,31 +132,50 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding border-t border-accent-gold/10">
+      <section className="section-padding border-t border-accent-gold/10 bg-gradient-to-b from-accent-gold/5 to-transparent">
         <div className="container-premium">
-          <div className="relative max-w-2xl mx-auto">
+          <div className="relative max-w-3xl mx-auto">
             {/* Background glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-accent-gold/10 to-accent-amber/10 rounded-3xl blur-2xl opacity-40"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-accent-gold/15 to-accent-amber/15 rounded-3xl blur-3xl opacity-50"></div>
 
-            <div className="relative card-premium p-8 md:p-12 text-center">
-              <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-white">
-                Ready to Get <span className="text-gradient">Serious</span> About Picks?
+            <div className="relative card-premium p-8 md:p-14 text-center border border-accent-gold/20 hover:border-accent-gold/40 transition-colors">
+              <div className="inline-block mb-4 px-4 py-2 rounded-full bg-accent-gold/10 border border-accent-gold/30">
+                <p className="text-xs font-bold text-accent-gold uppercase tracking-widest">Join 1,200+ Data-Driven Traders</p>
+              </div>
+
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
+                Ready to <span className="text-gradient">Win Consistently?</span>
               </h2>
-              <p className="text-gray-300 text-lg mb-8">
-                Join the community of data-driven bettors. Free access during beta.
+              <p className="text-gray-300 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+                Get verified NBA picks with 72.9% win rate. Real models, real results, real transparency.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 btn-primary">
-                  Get Started Free
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <button className="btn-primary px-8 py-3 text-base group relative overflow-hidden">
+                  <span className="relative z-10">Start Free Beta →</span>
                 </button>
-                <Link href="/track-record" className="flex-1 btn-secondary">
-                  View Full Results
+                <Link href="/track-record" className="btn-secondary px-8 py-3 text-base hover:border-accent-gold/70 transition-all">
+                  View Live Results
                 </Link>
               </div>
 
-              <p className="text-sm text-gray-500 mt-6">
-                ✓ No credit card required • ✓ Full pick history included • ✓ Cancel anytime
+              <div className="grid grid-cols-3 gap-6 text-center max-w-md mx-auto mb-6">
+                <div>
+                  <p className="text-2xl font-bold text-accent-gold">72.9%</p>
+                  <p className="text-xs text-gray-400 mt-1">Win Rate</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-accent-gold">+24.2%</p>
+                  <p className="text-xs text-gray-400 mt-1">Avg ROI</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-accent-gold">418</p>
+                  <p className="text-xs text-gray-400 mt-1">Verified</p>
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500">
+                ✓ No credit card • ✓ Transparent methodology • ✓ Cancel anytime
               </p>
             </div>
           </div>

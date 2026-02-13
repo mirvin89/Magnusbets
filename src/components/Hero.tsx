@@ -24,16 +24,16 @@ export default function Hero() {
           </h1>
           
           <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-            Professional-grade quantitative models with transparent methodology. No AI hype, just data-driven edge and verified performance.
+            Data-driven NBA picks with transparent models. Every bet tracked, every result verified. Real performance, no excuses.
           </p>
         </div>
 
         {/* Key Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 animate-slide-up" style={{ animationDelay: '0.1s' }}>
           {[
-            { value: '72.9%', label: 'Win Rate', sublabel: '418 verified bets' },
-            { value: '+24.2%', label: 'Avg ROI', sublabel: 'Per bet' },
-            { value: '$24.2K', label: 'Total Profit', sublabel: 'Since launch' },
+            { value: '55.6%', label: 'Win Rate', sublabel: '10/18 verified bets' },
+            { value: '+12.2%', label: 'Avg ROI', sublabel: 'Per bet' },
+            { value: '+$219', label: 'Total Profit', sublabel: 'Real money' },
           ].map((stat, idx) => (
             <div key={idx} className="stat-card group cursor-default">
               <div className="relative z-10">
@@ -53,11 +53,12 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          <button className="btn-primary">
-            Get Started Free
+          <button className="btn-primary group relative overflow-hidden">
+            <span className="relative z-10">Join Free Beta →</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-accent-gold to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
-          <Link href="/track-record" className="btn-secondary">
-            View Track Record
+          <Link href="/track-record" className="btn-secondary hover:border-accent-gold/70 transition-colors">
+            See Verified Results
           </Link>
         </div>
 

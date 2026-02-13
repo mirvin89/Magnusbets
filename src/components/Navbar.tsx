@@ -37,9 +37,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Sign In Button */}
-          <button className="btn-secondary text-sm px-6 py-2">
-            Sign In
+          {/* CTA Button */}
+          <button className="relative px-6 py-2.5 rounded-lg font-medium text-sm overflow-hidden group transition-all duration-300 bg-gradient-to-r from-accent-gold to-accent-amber text-premium-dark hover:shadow-lg hover:shadow-accent-gold/50">
+            <span className="relative z-10">Join Beta</span>
           </button>
 
           {/* Mobile Menu Button */}
