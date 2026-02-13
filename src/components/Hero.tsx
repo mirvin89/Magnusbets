@@ -1,10 +1,16 @@
 'use client'
 
 import Link from 'next/link'
+import { useState } from 'react'
+import AuthModal from './AuthModal'
 
 export default function Hero() {
+  const [authOpen, setAuthOpen] = useState(false)
+
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-32">
+    <>
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
+      <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-32">
       {/* Animated background elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/5 rounded-full blur-3xl opacity-20"></div>
@@ -51,9 +57,8 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-8 md:mb-12 animate-slide-up px-4 md:px-0" style={{ animationDelay: '0.2s' }}>
-          <button className="btn-primary group relative overflow-hidden">
+          <button onClick={() => setAuthOpen(true)} className="btn-primary group relative overflow-hidden">
             <span className="relative z-10">Join Free Beta →</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-accent-gold to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
           <Link href="/track-record" className="btn-secondary hover:border-accent-gold/70 transition-colors">
             See Verified Results
@@ -66,5 +71,6 @@ export default function Hero() {
         </div>
       </div>
     </section>
+    </>
   )
 }
