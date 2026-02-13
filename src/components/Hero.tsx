@@ -5,20 +5,23 @@ import Link from 'next/link'
 export default function Hero() {
   return (
     <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-32">
-      {/* No animated background for minimal look */}
+      {/* Animated background elements */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/5 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute top-1/2 right-0 w-72 h-72 bg-cyan-500/5 rounded-full blur-2xl opacity-25"></div>
 
       <div className="container-premium relative z-10">
         {/* Main Heading */}
         <div className="text-center mb-8 md:mb-20 max-w-3xl mx-auto animate-fade-in px-4 md:px-0">
-          <div className="inline-block mb-6 px-4 py-2 rounded-lg bg-gray-100 border border-gray-200">
-            <p className="text-sm font-medium text-gray-700">Professional NBA Intelligence</p>
+          <div className="inline-block mb-6 px-4 py-2 rounded-lg glass border-cyan-500/30">
+            <p className="text-sm font-medium text-cyan-300">Professional NBA Intelligence</p>
           </div>
           
-          <h1 className="font-playfair text-3xl md:text-7xl font-bold mb-4 md:mb-6 leading-tight text-black">
-            Quantitative<br />NBA Picks<br />Verified Results
+          <h1 className="font-playfair text-3xl md:text-7xl font-bold mb-4 md:mb-6 leading-tight text-white">
+            Quantitative<br /><span className="text-gradient">NBA Picks</span><br />Verified Results
           </h1>
           
-          <p className="text-base md:text-lg text-gray-600 mb-6 md:mb-8 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 leading-relaxed">
             Data-driven NBA picks with transparent models. Every bet tracked, every result verified. Real performance, no excuses.
           </p>
         </div>
@@ -32,13 +35,13 @@ export default function Hero() {
           ].map((stat, idx) => (
             <div key={idx} className="stat-card group cursor-default">
               <div className="relative z-10">
-                <p className="text-xs md:text-sm font-medium text-gray-500 mb-3 uppercase tracking-wider">
+                <p className="text-xs md:text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">
                   {stat.label}
                 </p>
-                <p className="text-3xl md:text-5xl font-bold text-black mb-2">
+                <p className="text-3xl md:text-5xl font-bold text-gradient mb-2">
                   {stat.value}
                 </p>
-                <p className="text-xs md:text-sm text-gray-600">
+                <p className="text-xs md:text-sm text-gray-500">
                   {stat.sublabel}
                 </p>
               </div>
@@ -58,7 +61,7 @@ export default function Hero() {
         </div>
 
         {/* Trust Badge */}
-        <div className="text-center text-xs md:text-sm text-gray-600 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        <div className="text-center text-xs md:text-sm text-gray-400 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <p>✓ Zero commission • ✓ Transparent models • ✓ Real results</p>
         </div>
       </div>
