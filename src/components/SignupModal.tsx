@@ -35,10 +35,10 @@ export default function SignupModal() {
           <p className="text-xs font-bold text-accent-gold uppercase tracking-wider">⚡ Limited Beta Access</p>
         </div>
 
-        <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-2">
+        <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-900 mb-2">
           72.9% Win Rate <span className="text-gradient">Picks</span>
         </h2>
-        <p className="text-gray-300 mb-8 text-lg leading-relaxed">
+        <p className="text-gray-500 mb-8 text-lg leading-relaxed">
           Join 1,200+ traders getting verified NBA picks with transparent ROI. Free beta access—no credit card needed.
         </p>
 
@@ -50,7 +50,7 @@ export default function SignupModal() {
             '✓ Model methodology explained',
             '✓ Cancel anytime',
           ].map((benefit, idx) => (
-            <div key={idx} className="text-gray-300">{benefit}</div>
+            <div key={idx} className="text-gray-500">{benefit}</div>
           ))}
         </div>
         
@@ -61,7 +61,7 @@ export default function SignupModal() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="flex-1 px-6 py-3 bg-premium-navy/70 border border-accent-gold/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent-gold/70 focus:bg-premium-navy/90 transition-all duration-300"
+            className="flex-1 px-6 py-3 bg-premium-navy/70 border border-accent-gold/30 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-accent-gold/70 focus:bg-premium-navy/90 transition-all duration-300"
           />
           <button
             type="submit"

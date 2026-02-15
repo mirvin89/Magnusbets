@@ -1,188 +1,108 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { supabase } from '@/lib/supabase'
 
 type Pick = {
-  id: number
+  id: string
   game_date: string
-  team: string
-  opponent: string
-  bet_type: 'spread' | 'total' | 'moneyline'
+  away_team: string
+  home_team: string
+  bet_type: string
   line: string
+  edge: number
   confidence: number
-  predicted_outcome: 'win' | 'loss' | 'pending'
-  actual_outcome?: 'win' | 'loss' | 'push'
-  odds: number
+  odds?: number
 }
 
-const TodayPicks = () => {
-  const [picks] = useState<Pick[]>([
-    {
-      id: 1,
-      game_date: '2026-02-12',
-      team: 'Lakers',
-      opponent: 'Warriors',
-      bet_type: 'spread',
-      line: 'Lakers -5.5',
-      confidence: 78,
-      predicted_outcome: 'win',
-      odds: 1.91
-    },
-    {
-      id: 2,
-      game_date: '2026-02-12',
-      team: 'Celtics',
-      opponent: 'Nets',
-      bet_type: 'total',
-      line: 'OVER 225.5',
-      confidence: 82,
-      predicted_outcome: 'win',
-      odds: 1.87
-    },
-    {
-      id: 3,
-      game_date: '2026-02-12',
-      team: 'Bucks',
-      opponent: 'Suns',
-      bet_type: 'moneyline',
-      line: 'Bucks ML',
-      confidence: 65,
-      predicted_outcome: 'win',
-      odds: 1.75
-    },
-    {
-      id: 4,
-      game_date: '2026-02-12',
-      team: 'Heat',
-      opponent: 'Knicks',
-      bet_type: 'spread',
-      line: 'Heat +3.5',
-      confidence: 71,
-      predicted_outcome: 'win',
-      odds: 1.95
-    }
-  ])
+export default function TodayPicks() {
+  const [picks, setPicks] = useState&lt;Pick[]&gt;([])
+  const [loading, setLoading] = useState(true)
 
-  const getBetTypeColor = (type: string) => {
-    switch (type) {
-      case 'spread':
-        return 'from-blue-600 to-blue-400'
-      case 'total':
-        return 'from-purple-600 to-purple-400'
-      case 'moneyline':
-        return 'from-amber-600 to-amber-400'
-      default:
-        return 'from-accent-gold to-accent-amber'
-    }
+  useEffect(() =&gt; {
+    fetchPicks()
+  }, [])
+
+  const fetchPicks = async () =&gt; {
+    const today = new Date().toISOString().split('T')[0]
+    const { data, error } = await supabase
+      .from('picks')
+      .select('*')
+      .eq('game_date', today)
+      .order('confidence', { ascending: false })
+    if (error) console.error(error)
+    else setPicks(data || [])
+    setLoading(false)
   }
 
-  const getConfidenceColor = (confidence: number) => {
-    if (confidence >= 80) return 'from-green-600 to-emerald-500'
-    if (confidence >= 70) return 'from-accent-gold to-accent-amber'
-    return 'from-orange-600 to-orange-400'
-  }
+  if (loading) return &lt;div className="section-padding container-premium text-center"&gt;&lt;p className="text-xl text-gray-600"&gt;Loading live picks...&lt;/p&gt;&lt;/div&gt;
 
   return (
-    <section className="section-padding">
-      <div className="container-premium">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <div className="inline-block mb-6 px-4 py-2 rounded-full glass border-accent-gold/30">
-            <p className="text-sm font-medium text-accent-gold">Live Picks</p>
-          </div>
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-white">
-            Today's <span className="text-gradient">Top Picks</span>
-          </h2>
-          <p className="text-lg text-gray-400">
-            Hand-selected from our quantitative models with confidence scores and edge analysis.
-          </p>
-          <div className="inline-flex items-center mt-6 px-4 py-2 glass border-accent-gold/30">
-            <span className="w-2 h-2 bg-green-500 rounded-full mr-3 animate-pulse"></span>
-            <span className="text-sm text-gray-300">Live picks refresh daily at 5 PM EST</span>
-          </div>
-        </div>
+    &lt;section className="section-padding"&gt;
+      &lt;div className="container-premium"&gt;
+        &lt;div className="text-center mb-16 max-w-2xl mx-auto"&gt;
+          &lt;div className="inline-block mb-6 px-4 py-2 rounded-lg glass border-blue-500/30"&gt;
+            &lt;p className="text-sm font-medium text-blue-500"&gt;Live Quantitative Picks&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-gray-900"&gt;
+            Today's &lt;span className="text-gradient"&gt;Top Picks&lt;/span&gt;
+          &lt;/h2&gt;
+          &lt;p className="text-lg text-gray-600"&gt;
+            Quantitative models • Live data • Responsive table
+          &lt;/p&gt;
+        &lt;/div&gt;
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {picks.map((pick, idx) => (
-            <div
-              key={pick.id}
-              className="card-premium p-6 group"
-              style={{ animationDelay: `${idx * 0.1}s` }}
-            >
-              {/* Header */}
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl font-bold text-white">{pick.team}</span>
-                    <span className="text-gray-500">vs</span>
-                    <span className="text-2xl font-bold text-white">{pick.opponent}</span>
-                  </div>
-                  <div className="text-sm text-gray-500">{pick.game_date}</div>
-                </div>
-                <div className={`h-10 w-10 rounded-xl bg-gradient-to-br ${getBetTypeColor(pick.bet_type)} flex items-center justify-center`}>
-                  <span className="text-xs font-bold text-white uppercase">{pick.bet_type[0]}</span>
-                </div>
-              </div>
-
-              {/* Bet Details Grid */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-gradient-to-br from-accent-gold/10 to-accent-amber/5 rounded-xl p-4 border border-accent-gold/20">
-                  <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Line</p>
-                  <p className="text-2xl font-bold text-white">{pick.line}</p>
-                </div>
-                <div className="bg-gradient-to-br from-accent-gold/10 to-accent-amber/5 rounded-xl p-4 border border-accent-gold/20">
-                  <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Odds</p>
-                  <p className="text-2xl font-bold text-accent-gold">{pick.odds.toFixed(2)}</p>
-                </div>
-              </div>
-
-              {/* Confidence Score */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-3">
-                  <p className="text-sm font-medium text-gray-300">Confidence</p>
-                  <p className={`text-lg font-bold bg-gradient-to-r ${getConfidenceColor(pick.confidence)} bg-clip-text text-transparent`}>
+        &lt;div className="overflow-x-auto rounded-lg border border-gray-200 shadow-md"&gt;
+          &lt;table className="min-w-full divide-y divide-gray-200 bg-white"&gt;
+            &lt;thead className="bg-gray-50"&gt;
+              &lt;tr&gt;
+                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Game&lt;/th&gt;
+                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Bet&lt;/th&gt;
+                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Line&lt;/th&gt;
+                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Edge&lt;/th&gt;
+                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Confidence&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody className="divide-y divide-gray-200"&gt;
+              {picks.map((pick) =&gt; (
+                &lt;tr key={pick.id} className="hover:bg-gray-50"&gt;
+                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;
+                    {pick.away_team} @ {pick.home_team}
+                  &lt;/td&gt;
+                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize"&gt;
+                    {pick.bet_type}
+                  &lt;/td&gt;
+                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900"&gt;
+                    {pick.line}
+                  &lt;/td&gt;
+                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm"&gt;
+                    &lt;span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"&gt;
+                      +{pick.edge.toFixed(1)}%
+                    &lt;/span&gt;
+                  &lt;/td&gt;
+                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;
                     {pick.confidence}%
-                  </p>
-                </div>
-                <div className="h-2 bg-gray-700/50 rounded-full overflow-hidden border border-gray-600/30">
-                  <div
-                    className={`h-full bg-gradient-to-r ${getConfidenceColor(pick.confidence)} transition-all duration-1000`}
-                    style={{ width: `${pick.confidence}%` }}
-                  ></div>
-                </div>
-              </div>
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              ))}
+              {picks.length === 0 &amp;&amp; (
+                &lt;tr&gt;
+                  &lt;td colSpan={5} className="px-6 py-12 text-center text-gray-500 text-lg"&gt;
+                    No picks available today. Check back tomorrow!
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              )}
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
 
-              {/* Footer */}
-              <div className="pt-6 border-t border-accent-gold/10 flex items-center justify-between">
-                <div className="text-sm text-gray-400">
-                  <span className="text-accent-gold font-medium">Edge:</span> +{pick.confidence - 50}%
-                </div>
-                <button className="btn-primary text-xs px-4 py-2">
-                  View Details →
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Beta CTA */}
-        <div className="mt-16 max-w-2xl mx-auto">
-          <div className="card-premium p-8 border-l-4 border-l-accent-gold text-center">
-            <div className="inline-block mb-4 text-3xl">🚀</div>
-            <h3 className="text-2xl font-bold text-white mb-3">Free During Beta</h3>
-            <p className="text-gray-300 mb-6">
-              All picks are currently free. Subscribe now to lock in lifetime pricing and get priority support.
-            </p>
-            <button className="btn-primary w-full md:w-auto">
-              Subscribe Now – It's Free
-            </button>
-            <p className="text-sm text-gray-500 mt-4">
-              Members get real-time alerts, full model breakdowns, and live tracking.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+        &lt;div className="mt-16 text-center"&gt;
+          &lt;Link href="/auth" className="btn-primary"&gt;
+            Join Beta for Alerts &amp; Full Access
+          &lt;/Link&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
   )
 }
-
-export default TodayPicks

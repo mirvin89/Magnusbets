@@ -145,7 +145,7 @@ const PerformanceChart = () => {
                 onClick={() => setTimeRange(range)}
                 className={`px-6 py-2 rounded-full font-medium transition-all ${
                   timeRange === range
-                    ? 'bg-gray-900 text-white'
+                    ? 'bg-gray-900 text-gray-900'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >

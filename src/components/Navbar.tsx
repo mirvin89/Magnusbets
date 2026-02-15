@@ -29,7 +29,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-gray-300 hover:text-accent-gold transition-colors text-sm font-medium relative group"
+                className="px-4 py-2 text-gray-500 hover:text-accent-gold transition-colors text-sm font-medium relative group"
               >
                 {link.label}
                 <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-accent-gold to-accent-amber scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
@@ -38,7 +38,7 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <Link href="/auth" className="relative px-6 py-2.5 rounded-lg font-medium text-sm overflow-hidden group transition-all duration-300 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white hover:shadow-lg hover:shadow-cyan-500/50">
+          <Link href="/auth" className="relative px-6 py-2.5 rounded-lg font-medium text-sm overflow-hidden group transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-600 text-gray-900 hover:shadow-lg hover:shadow-blue-500/50">
             <span className="relative z-10">Join Beta</span>
           </Link>
 
@@ -65,14 +65,14 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-4 py-3 text-gray-300 hover:text-cyan-400 transition-colors text-sm font-medium"
+                className="block px-4 py-3 text-gray-500 hover:text-cyan-400 transition-colors text-sm font-medium"
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/auth"
-              className="block px-4 py-3 text-cyan-400 font-medium text-sm border-t border-cyan-500/10"
+              className="block px-4 py-3 text-cyan-400 font-medium text-sm border-t border-blue-500/10"
             >
               Join Beta
             </Link>

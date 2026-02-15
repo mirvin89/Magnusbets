@@ -32,10 +32,10 @@ const Testimonials = () => {
     <section className="section-padding">
       <div className="container-premium">
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-gray-900">
             What Our <span className="text-gradient">Members Say</span>
           </h2>
-          <p className="text-lg text-gray-400">
+          <p className="text-lg text-gray-600">
             Join thousands of bettors who have transformed their approach.
           </p>
         </div>
@@ -51,18 +51,18 @@ const Testimonials = () => {
               </div>
 
               {/* Quote */}
-              <p className="text-gray-300 italic mb-8 leading-relaxed">
+              <p className="text-gray-500 italic mb-8 leading-relaxed">
                 "{testimonial.content}"
               </p>
 
               {/* Author */}
               <div className="flex items-center justify-between pt-6 border-t border-accent-gold/10">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonial.color} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonial.color} flex items-center justify-center text-gray-900 font-bold text-sm flex-shrink-0`}>
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <div className="font-bold text-white text-sm">{testimonial.name}</div>
+                    <div className="font-bold text-gray-900 text-sm">{testimonial.name}</div>
                     <div className="text-gray-500 text-xs">{testimonial.role}</div>
                   </div>
                 </div>
@@ -87,15 +87,15 @@ const Testimonials = () => {
             </div>
             <div className="w-px h-12 bg-accent-gold/20"></div>
             <div className="text-left">
-              <p className="font-bold text-white">From 247+ Members</p>
-              <p className="text-sm text-gray-400">Average member rating</p>
+              <p className="font-bold text-gray-900">From 247+ Members</p>
+              <p className="text-sm text-gray-600">Average member rating</p>
             </div>
           </div>
         </div>
 
         {/* CTA */}
         <div className="text-center">
-          <p className="text-gray-400 mb-6">Ready to join the community?</p>
+          <p className="text-gray-600 mb-6">Ready to join the community?</p>
           <button className="btn-primary">
             Get Started Free
           </button>

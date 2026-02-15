@@ -76,53 +76,53 @@ export default function AuthModal({ isOpen, onClose }: { isOpen: boolean; onClos
       <div className="card-premium p-8 md:p-12 max-w-md w-full max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+          className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition-colors"
         >
           ✕
         </button>
 
-        <h2 className="font-playfair text-3xl font-bold text-white mb-2">
+        <h2 className="font-playfair text-3xl font-bold text-gray-900 mb-2">
           {isSignUp ? 'Join MagnusBets' : 'Sign In'}
         </h2>
-        <p className="text-gray-400 mb-6">
+        <p className="text-gray-600 mb-6">
           {isSignUp ? 'Create your free account to get started' : 'Welcome back'}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+            <label className="block text-sm font-medium text-gray-500 mb-2">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full px-4 py-2 bg-cyan-950/30 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full px-4 py-2 bg-cyan-950/30 border border-blue-500/20 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+            <label className="block text-sm font-medium text-gray-500 mb-2">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               required
-              className="w-full px-4 py-2 bg-cyan-950/30 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full px-4 py-2 bg-cyan-950/30 border border-blue-500/20 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
             />
           </div>
 
           {isSignUp && (
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Confirm Password</label>
+              <label className="block text-sm font-medium text-gray-500 mb-2">Confirm Password</label>
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full px-4 py-2 bg-cyan-950/30 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                className="w-full px-4 py-2 bg-cyan-950/30 border border-blue-500/20 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
               />
             </div>
           )}
@@ -148,7 +148,7 @@ export default function AuthModal({ isOpen, onClose }: { isOpen: boolean; onClos
           </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-gray-400">
+        <div className="mt-6 text-center text-sm text-gray-600">
           {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
           <button
             onClick={() => setIsSignUp(!isSignUp)}

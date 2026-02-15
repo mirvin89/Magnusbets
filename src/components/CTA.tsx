@@ -6,10 +6,10 @@ const CTA = () => {
       <div className="container-premium">
         <div className="card-premium p-12 md:p-16 text-center border-t-4 border-t-accent-gold">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               Start Beating the <span className="text-gradient">Books</span> Today
             </h2>
-            <p className="text-xl text-gray-300 mb-12">
+            <p className="text-xl text-gray-500 mb-12">
               Get data-driven picks, live tracking, and proven results. Free during beta, then lock in your price forever.
             </p>
             
@@ -56,9 +56,9 @@ const CTA = () => {
                     <div className="text-5xl font-bold text-gradient mb-2">
                       {plan.price}
                     </div>
-                    <div className="text-gray-400 text-sm mb-4">{plan.period}</div>
-                    <div className="font-bold text-white text-xl mb-3">{plan.name}</div>
-                    <p className="text-gray-400 mb-8 text-sm h-16 flex items-center">
+                    <div className="text-gray-600 text-sm mb-4">{plan.period}</div>
+                    <div className="font-bold text-gray-900 text-xl mb-3">{plan.name}</div>
+                    <p className="text-gray-600 mb-8 text-sm h-16 flex items-center">
                       {plan.desc}
                     </p>
                     <button
@@ -76,13 +76,13 @@ const CTA = () => {
               <p className="text-accent-gold font-medium mb-3">
                 ✓ 7-day money-back guarantee · ✓ No long-term contract · ✓ Cancel anytime
               </p>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-600 text-sm">
                 All subscriptions include access to our Discord community, real-time alerts, and full historical data.
               </p>
             </div>
 
             {/* Bottom CTA */}
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-600 text-sm">
               Questions? <a href="#" className="text-accent-gold hover:text-accent-amber transition-colors">Join our Discord</a> or email support.
             </p>
           </div>

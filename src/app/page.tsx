@@ -7,13 +7,13 @@ export default function Home() {
       <Hero />
 
       {/* Why MagnusBets - Benefits Section */}
-      <section className="py-16 md:py-24 border-b border-cyan-500/10">
+      <section className="py-16 md:py-24 border-b border-blue-500/10">
         <div className="container-premium">
           <div className="text-center mb-12 md:mb-16 max-w-2xl mx-auto px-4 md:px-0">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-white">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-gray-900">
               Why <span className="text-gradient">MagnusBets</span>
             </h2>
-            <p className="text-base md:text-lg text-gray-300">
+            <p className="text-base md:text-lg text-gray-500">
               Built on a foundation of rigorous quantitative analysis and real-world validation.
             </p>
           </div>
@@ -37,13 +37,13 @@ export default function Home() {
               },
             ].map((feature, idx) => (
               <div key={idx} className="card-premium group p-8 hover:shadow-lg transition-all">
-                <div className="w-12 md:w-14 h-12 md:h-14 rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center text-xl md:text-2xl font-bold text-white mb-4">
+                <div className="w-12 md:w-14 h-12 md:h-14 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-xl md:text-2xl font-bold text-gray-900 mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-white mb-3">
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -53,25 +53,25 @@ export default function Home() {
       </section>
 
       {/* Problem / Solution Section */}
-      <section className="py-16 md:py-24 bg-cyan-950/20 border-b border-cyan-500/10">
+      <section className="py-16 md:py-24 bg-cyan-950/20 border-b border-blue-500/10">
         <div className="container-premium px-4 md:px-0">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-white">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-gray-900">
               The Problem
             </h2>
-            <p className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-500 mb-8 leading-relaxed">
               Most sports bettors lose money because they rely on intuition, bias, and incomplete information. Vegas odds are set by professionals with unlimited data. You need an edge—not luck.
             </p>
 
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-white mt-12">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-gray-900 mt-12">
               Our Solution
             </h2>
-            <p className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-500 mb-8 leading-relaxed">
               Quantitative models trained on years of historical data. We identify market inefficiencies where odds diverge from true probabilities. Every pick is transparent, tracked, and backed by math—not gut feel.
             </p>
 
-            <div className="mt-10 pt-10 border-t border-cyan-500/10">
-              <h3 className="font-playfair text-2xl md:text-3xl font-bold mb-6 text-white">What You Get</h3>
+            <div className="mt-10 pt-10 border-t border-blue-500/10">
+              <h3 className="font-playfair text-2xl md:text-3xl font-bold mb-6 text-gray-900">What You Get</h3>
               <ul className="space-y-4">
                 {[
                   'Daily NBA picks with confidence scores',
@@ -83,7 +83,7 @@ export default function Home() {
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <span className="text-cyan-400 font-bold text-lg mt-0.5">✓</span>
-                    <span className="text-base text-gray-300">{item}</span>
+                    <span className="text-base text-gray-500">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -93,9 +93,9 @@ export default function Home() {
       </section>
 
       {/* Methodology / How It Works */}
-      <section className="py-16 md:py-24 border-b border-cyan-500/10">
+      <section className="py-16 md:py-24 border-b border-blue-500/10">
         <div className="container-premium px-4 md:px-0">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-white text-center">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
             How It Works
           </h2>
 
@@ -124,13 +124,13 @@ export default function Home() {
             ].map((item, idx) => (
               <div key={idx} className="flex gap-6 items-start">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-600 text-white font-bold text-sm">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 text-gray-900 font-bold text-sm">
                     {item.step}
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{item.description}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -139,9 +139,9 @@ export default function Home() {
       </section>
 
       {/* Social Proof / Testimonials */}
-      <section className="py-16 md:py-24 bg-cyan-950/20 border-b border-cyan-500/10">
+      <section className="py-16 md:py-24 bg-cyan-950/20 border-b border-blue-500/10">
         <div className="container-premium px-4 md:px-0">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-white text-center">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
             Trusted by Professional Bettors
           </h2>
 
@@ -153,19 +153,19 @@ export default function Home() {
             ].map((stat, idx) => (
               <div key={idx} className="text-center">
                 <div className="text-5xl md:text-6xl font-bold text-gradient mb-2">{stat.value}</div>
-                <p className="text-gray-400 font-medium">{stat.label}</p>
+                <p className="text-gray-600 font-medium">{stat.label}</p>
               </div>
             ))}
           </div>
 
           <div className="max-w-3xl mx-auto">
             <div className="card-premium p-8 md:p-10">
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed italic">
+              <p className="text-lg text-gray-500 mb-6 leading-relaxed italic">
                 "I've been using MagnusBets for 6 weeks now. The transparency is unreal. I can see exactly how each model votes on every play. Finally, a betting service that's not trying to hide anything."
               </p>
               <div>
-                <p className="font-bold text-white">— Michael R., Professional Bettor</p>
-                <p className="text-sm text-gray-400">Turned $500 into $1,240 in 2 months</p>
+                <p className="font-bold text-gray-900">— Michael R., Professional Bettor</p>
+                <p className="text-sm text-gray-600">Turned $500 into $1,240 in 2 months</p>
               </div>
             </div>
           </div>
@@ -173,19 +173,19 @@ export default function Home() {
       </section>
 
       {/* Services / Pricing Structure */}
-      <section className="py-16 md:py-24 border-b border-cyan-500/10">
+      <section className="py-16 md:py-24 border-b border-blue-500/10">
         <div className="container-premium px-4 md:px-0">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-white text-center">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
             Simple Pricing
           </h2>
 
           <div className="max-w-2xl mx-auto">
             <div className="card-premium p-8 md:p-12">
-              <div className="inline-block mb-6 px-3 py-1 bg-cyan-500/20 rounded text-sm font-semibold text-cyan-300">
+              <div className="inline-block mb-6 px-3 py-1 bg-blue-500/20 rounded text-sm font-semibold text-cyan-300">
                 Free Beta
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">$0/month</h3>
-              <p className="text-gray-300 mb-8">Get started with zero risk. Full access during beta.</p>
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">$0/month</h3>
+              <p className="text-gray-500 mb-8">Get started with zero risk. Full access during beta.</p>
 
               <ul className="space-y-4 mb-10">
                 {[
@@ -198,7 +198,7 @@ export default function Home() {
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3">
                     <span className="text-cyan-400 font-bold">✓</span>
-                    <span className="text-gray-300">{item}</span>
+                    <span className="text-gray-500">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -217,20 +217,20 @@ export default function Home() {
       {/* Final CTA / Action Banner */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-cyan-950/30 to-black/80">
         <div className="container-premium px-4 md:px-0 text-center">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-white">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Stop Guessing. Start <span className="text-gradient">Winning</span>.
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto">
             Join 1,200+ bettors using quantitative models for real edge. Free beta access right now.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/auth" className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all inline-block">
+            <Link href="/auth" className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-gray-900 font-bold rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all inline-block">
               Get Started Free →
             </Link>
             <Link
               href="/track-record"
-              className="px-8 py-3 border-2 border-cyan-500/50 text-cyan-300 font-bold rounded-lg hover:border-cyan-400 hover:bg-cyan-500/10 transition-colors"
+              className="px-8 py-3 border-2 border-blue-500/50 text-cyan-300 font-bold rounded-lg hover:border-cyan-400 hover:bg-blue-500/10 transition-colors"
             >
               View Track Record
             </Link>

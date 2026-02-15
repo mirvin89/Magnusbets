@@ -16,8 +16,8 @@ export default function Footer() {
             <Link href="/" className="text-2xl font-playfair font-bold text-gradient mb-4 inline-block">
               MB
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Quantitative NBA picks with verified results. Professional-grade models, transparent methodology, zero AI hype.
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              Quantitative NBA picks with verified results. Professional-grade models, transparent methodology, powered by quantitative models.
             </p>
             <div className="flex space-x-4">
               {[
@@ -39,7 +39,7 @@ export default function Footer() {
 
           {/* Product */}
           <div>
-            <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Product</h4>
+            <h4 className="text-gray-900 font-semibold mb-6 text-sm uppercase tracking-wider">Product</h4>
             <ul className="space-y-3 text-sm">
               {[
                 { href: '/picks', label: 'Today\'s Picks' },
@@ -49,7 +49,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-accent-gold transition-colors duration-300"
+                    className="text-gray-600 hover:text-accent-gold transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -60,7 +60,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Company</h4>
+            <h4 className="text-gray-900 font-semibold mb-6 text-sm uppercase tracking-wider">Company</h4>
             <ul className="space-y-3 text-sm">
               {[
                 { href: '/about', label: 'About' },
@@ -70,7 +70,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-accent-gold transition-colors duration-300"
+                    className="text-gray-600 hover:text-accent-gold transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -81,7 +81,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Legal</h4>
+            <h4 className="text-gray-900 font-semibold mb-6 text-sm uppercase tracking-wider">Legal</h4>
             <ul className="space-y-3 text-sm">
               {[
                 { href: '#', label: 'Terms' },
@@ -91,7 +91,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-accent-gold transition-colors duration-300"
+                    className="text-gray-600 hover:text-accent-gold transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -115,7 +115,7 @@ export default function Footer() {
 
         {/* Disclaimer */}
         <div className="card-premium bg-gradient-to-r from-accent-gold/5 to-accent-amber/5 p-4">
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className="text-xs text-gray-600 leading-relaxed">
             <strong className="text-accent-gold">Disclaimer:</strong> Past performance does not guarantee future results. Betting involves risk. Please gamble responsibly and consult local regulations.
           </p>
         </div>

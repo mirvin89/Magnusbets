@@ -7,10 +7,10 @@ export default function PricingPage() {
           <div className="inline-block mb-6 px-4 py-2 rounded-full glass border-accent-gold/30">
             <p className="text-sm font-medium text-accent-gold">Simple & Transparent</p>
           </div>
-          <h1 className="font-playfair text-5xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className="font-playfair text-5xl md:text-6xl font-bold mb-6 text-gray-900">
             Pricing Built for <span className="text-gradient">Serious Bettors</span>
           </h1>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-gray-600">
             No hidden fees. No surprises. Free during beta, then lock in your price forever.
           </p>
         </div>
@@ -78,12 +78,12 @@ export default function PricingPage() {
               )}
               
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                <p className="text-gray-400 text-sm mb-6">{plan.description}</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                <p className="text-gray-600 text-sm mb-6">{plan.description}</p>
                 
                 <div className="mb-8">
                   <span className="text-5xl font-bold text-gradient">{plan.price}</span>
-                  <span className="text-gray-400 text-sm ml-2">{plan.period}</span>
+                  <span className="text-gray-600 text-sm ml-2">{plan.period}</span>
                 </div>
 
                 <button
@@ -96,7 +96,7 @@ export default function PricingPage() {
                   {plan.features.map((feature, fdx) => (
                     <div key={fdx} className="flex items-start gap-3">
                       <span className="text-accent-gold font-bold flex-shrink-0">✓</span>
-                      <span className="text-gray-300 text-sm">{feature}</span>
+                      <span className="text-gray-500 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -107,7 +107,7 @@ export default function PricingPage() {
 
         {/* Features Grid */}
         <div className="max-w-4xl mx-auto mb-20">
-          <h2 className="font-playfair text-3xl font-bold text-white text-center mb-12">
+          <h2 className="font-playfair text-3xl font-bold text-gray-900 text-center mb-12">
             What's <span className="text-gradient">Included</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -121,8 +121,8 @@ export default function PricingPage() {
             ].map((feature, idx) => (
               <div key={idx} className="p-6 bg-gradient-to-br from-accent-gold/10 to-accent-amber/5 rounded-xl border border-accent-gold/20">
                 <div className="text-2xl text-gradient mb-3">{feature.icon}</div>
-                <h3 className="font-bold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm">{feature.desc}</p>
+                <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -130,7 +130,7 @@ export default function PricingPage() {
 
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto mb-20">
-          <h2 className="font-playfair text-3xl font-bold text-white text-center mb-12">
+          <h2 className="font-playfair text-3xl font-bold text-gray-900 text-center mb-12">
             Frequently <span className="text-gradient">Asked Questions</span>
           </h2>
           <div className="space-y-6">
@@ -161,8 +161,8 @@ export default function PricingPage() {
               },
             ].map((item, idx) => (
               <div key={idx} className="card-premium p-6">
-                <h3 className="font-bold text-white mb-3 text-lg">{item.q}</h3>
-                <p className="text-gray-400">{item.a}</p>
+                <h3 className="font-bold text-gray-900 mb-3 text-lg">{item.q}</h3>
+                <p className="text-gray-600">{item.a}</p>
               </div>
             ))}
           </div>
@@ -170,10 +170,10 @@ export default function PricingPage() {
 
         {/* Contact CTA */}
         <div className="card-premium p-8 md:p-12 text-center border-l-4 border-l-accent-gold">
-          <h2 className="font-playfair text-3xl font-bold text-white mb-4">
+          <h2 className="font-playfair text-3xl font-bold text-gray-900 mb-4">
             Still have <span className="text-gradient">questions?</span>
           </h2>
-          <p className="text-gray-300 text-lg mb-8">
+          <p className="text-gray-500 text-lg mb-8">
             Our team is here to help. Reach out anytime.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
