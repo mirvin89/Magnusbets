@@ -7,10 +7,10 @@ export default function Home() {
       <Hero />
 
       {/* Why MagnusBets - Benefits Section */}
-      <section className="py-16 md:py-24 border-b border-blue-500/10">
+      <section className="py-24 md:py-40 border-b border-blue-500/10">
         <div className="container-premium">
           <div className="text-center mb-12 md:mb-16 max-w-2xl mx-auto px-4 md:px-0">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            <h2 className="font-bold text-4xl md:text-5xl font-bold mb-4 text-gray-900">
               Why <span className="text-gradient">MagnusBets</span>
             </h2>
             <p className="text-base md:text-lg text-gray-500">
@@ -18,7 +18,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 px-4 md:px-0">
             {[
               {
                 icon: '✓',
@@ -36,7 +36,7 @@ export default function Home() {
                 description: 'Built by quantitative analysts. Multi-model consensus. Risk management included.',
               },
             ].map((feature, idx) => (
-              <div key={idx} className="card-premium group p-8 hover:shadow-lg transition-all">
+              <div key={idx} className="card-premium group p-12 hover:shadow-xl transition-all">
                 <div className="w-12 md:w-14 h-12 md:h-14 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-xl md:text-2xl font-bold text-gray-900 mb-4">
                   {feature.icon}
                 </div>
@@ -53,17 +53,17 @@ export default function Home() {
       </section>
 
       {/* Problem / Solution Section */}
-      <section className="py-16 md:py-24 bg-cyan-950/20 border-b border-blue-500/10">
+      <section className="py-24 md:py-40 bg-cyan-950/20 border-b border-blue-500/10">
         <div className="container-premium px-4 md:px-0">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            <h2 className="font-bold text-3xl md:text-4xl font-bold mb-4 text-gray-900">
               The Problem
             </h2>
             <p className="text-base md:text-lg text-gray-500 mb-8 leading-relaxed">
               Most sports bettors lose money because they rely on intuition, bias, and incomplete information. Vegas odds are set by professionals with unlimited data. You need an edge—not luck.
             </p>
 
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-gray-900 mt-12">
+            <h2 className="font-bold text-3xl md:text-4xl font-bold mb-4 text-gray-900 mt-12">
               Our Solution
             </h2>
             <p className="text-base md:text-lg text-gray-500 mb-8 leading-relaxed">
@@ -71,7 +71,7 @@ export default function Home() {
             </p>
 
             <div className="mt-10 pt-10 border-t border-blue-500/10">
-              <h3 className="font-playfair text-2xl md:text-3xl font-bold mb-6 text-gray-900">What You Get</h3>
+              <h3 className="font-bold text-2xl md:text-3xl font-bold mb-6 text-gray-900">What You Get</h3>
               <ul className="space-y-4">
                 {[
                   'Daily NBA picks with confidence scores',
@@ -93,9 +93,9 @@ export default function Home() {
       </section>
 
       {/* Methodology / How It Works */}
-      <section className="py-16 md:py-24 border-b border-blue-500/10">
+      <section className="py-24 md:py-40 border-b border-blue-500/10">
         <div className="container-premium px-4 md:px-0">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
+          <h2 className="font-bold text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
             How It Works
           </h2>
 
@@ -139,9 +139,9 @@ export default function Home() {
       </section>
 
       {/* Social Proof / Testimonials */}
-      <section className="py-16 md:py-24 bg-cyan-950/20 border-b border-blue-500/10">
+      <section className="py-24 md:py-40 bg-cyan-950/20 border-b border-blue-500/10">
         <div className="container-premium px-4 md:px-0">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
+          <h2 className="font-bold text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
             Trusted by Professional Bettors
           </h2>
 
@@ -173,9 +173,9 @@ export default function Home() {
       </section>
 
       {/* Services / Pricing Structure */}
-      <section className="py-16 md:py-24 border-b border-blue-500/10">
+      <section className="py-24 md:py-40 border-b border-blue-500/10">
         <div className="container-premium px-4 md:px-0">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
+          <h2 className="font-bold text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
             Simple Pricing
           </h2>
 
@@ -215,9 +215,9 @@ export default function Home() {
       </section>
 
       {/* Final CTA / Action Banner */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-cyan-950/30 to-black/80">
+      <section className="py-24 md:py-40 bg-gradient-to-b from-cyan-950/30 to-black/80">
         <div className="container-premium px-4 md:px-0 text-center">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          <h2 className="font-bold text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Stop Guessing. Start <span className="text-gradient">Winning</span>.
           </h2>
           <p className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto">
