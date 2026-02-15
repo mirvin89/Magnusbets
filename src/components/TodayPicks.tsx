@@ -17,14 +17,14 @@ type Pick = {
 }
 
 export default function TodayPicks() {
-  const [picks, setPicks] = useState&lt;Pick[]&gt;([])
+  const [picks, setPicks] = useState<Pick[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() =&gt; {
+  useEffect(() => {
     fetchPicks()
   }, [])
 
-  const fetchPicks = async () =&gt; {
+  const fetchPicks = async () => {
     const today = new Date().toISOString().split('T')[0]
     const { data, error } = await supabase
       .from('picks')
@@ -36,73 +36,73 @@ export default function TodayPicks() {
     setLoading(false)
   }
 
-  if (loading) return &lt;div className="section-padding container-premium text-center"&gt;&lt;p className="text-xl text-gray-600"&gt;Loading live picks...&lt;/p&gt;&lt;/div&gt;
+  if (loading) return <div className="section-padding container-premium text-center"><p className="text-xl text-gray-600">Loading live picks...</p></div>
 
   return (
-    &lt;section className="section-padding"&gt;
-      &lt;div className="container-premium"&gt;
-        &lt;div className="text-center mb-16 max-w-2xl mx-auto"&gt;
-          &lt;div className="inline-block mb-6 px-4 py-2 rounded-lg glass border-blue-500/30"&gt;
-            &lt;p className="text-sm font-medium text-blue-500"&gt;Live Quantitative Picks&lt;/p&gt;
-          &lt;/div&gt;
-          &lt;h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-gray-900"&gt;
-            Today's &lt;span className="text-gradient"&gt;Top Picks&lt;/span&gt;
-          &lt;/h2&gt;
-          &lt;p className="text-lg text-gray-600"&gt;
+    <section className="section-padding">
+      <div className="container-premium">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <div className="inline-block mb-6 px-4 py-2 rounded-lg glass border-blue-500/30">
+            <p className="text-sm font-medium text-blue-500">Live Quantitative Picks</p>
+          </div>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            Today's <span className="text-gradient">Top Picks</span>
+          </h2>
+          <p className="text-lg text-gray-600">
             Quantitative models • Live data • Responsive table
-          &lt;/p&gt;
-        &lt;/div&gt;
+          </p>
+        </div>
 
-        &lt;div className="overflow-x-auto rounded-lg border border-gray-200 shadow-md"&gt;
-          &lt;table className="min-w-full divide-y divide-gray-200 bg-white"&gt;
-            &lt;thead className="bg-gray-50"&gt;
-              &lt;tr&gt;
-                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Game&lt;/th&gt;
-                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Bet&lt;/th&gt;
-                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Line&lt;/th&gt;
-                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Edge&lt;/th&gt;
-                &lt;th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"&gt;Confidence&lt;/th&gt;
-              &lt;/tr&gt;
-            &lt;/thead&gt;
-            &lt;tbody className="divide-y divide-gray-200"&gt;
-              {picks.map((pick) =&gt; (
-                &lt;tr key={pick.id} className="hover:bg-gray-50"&gt;
-                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;
+        <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-md">
+          <table className="min-w-full divide-y divide-gray-200 bg-white">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Game</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Bet</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Line</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Edge</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Confidence</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {picks.map((pick) => (
+                <tr key={pick.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     {pick.away_team} @ {pick.home_team}
-                  &lt;/td&gt;
-                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize"&gt;
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize">
                     {pick.bet_type}
-                  &lt;/td&gt;
-                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900"&gt;
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                     {pick.line}
-                  &lt;/td&gt;
-                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm"&gt;
-                    &lt;span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"&gt;
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                       +{pick.edge.toFixed(1)}%
-                    &lt;/span&gt;
-                  &lt;/td&gt;
-                  &lt;td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     {pick.confidence}%
-                  &lt;/td&gt;
-                &lt;/tr&gt;
+                  </td>
+                </tr>
               ))}
-              {picks.length === 0 &amp;&amp; (
-                &lt;tr&gt;
-                  &lt;td colSpan={5} className="px-6 py-12 text-center text-gray-500 text-lg"&gt;
+              {picks.length === 0 && (
+                <tr>
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500 text-lg">
                     No picks available today. Check back tomorrow!
-                  &lt;/td&gt;
-                &lt;/tr&gt;
+                  </td>
+                </tr>
               )}
-            &lt;/tbody&gt;
-          &lt;/table&gt;
-        &lt;/div&gt;
+            </tbody>
+          </table>
+        </div>
 
-        &lt;div className="mt-16 text-center"&gt;
-          &lt;Link href="/auth" className="btn-primary"&gt;
-            Join Beta for Alerts &amp; Full Access
-          &lt;/Link&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/section&gt;
+        <div className="mt-16 text-center">
+          <Link href="/auth" className="btn-primary">
+            Join Beta for Alerts & Full Access
+          </Link>
+        </div>
+      </div>
+    </section>
   )
 }
