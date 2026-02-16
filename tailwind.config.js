@@ -14,6 +14,7 @@ export default {
         'premium-slate': '#2d3748',
         'accent-gold': '#d4af37',
         'accent-amber': '#fbbf24',
+        'primary': '#FF9500',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
