@@ -12,9 +12,14 @@ export default {
         'premium-dark': '#0a0e27',
         'premium-navy': '#1a1f3a',
         'premium-slate': '#2d3748',
+<<<<<<< Updated upstream
         'accent-gold': '#d4af37',
         'accent-amber': '#fbbf24',
         'primary': '#FF9500',
+=======
+        'accent-gold': '#FF9500',
+        'accent-amber': '#f97316',
+>>>>>>> Stashed changes
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
@@ -36,8 +41,8 @@ export default {
           '50%': { opacity: '0.8' },
         },
         glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)' },
-          '50%': { boxShadow: '0 0 30px rgba(212, 175, 55, 0.5)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(255, 149, 0, 0.3)' },
+          '50%': { boxShadow: '0 0 30px rgba(255, 149, 0, 0.5)' },
         },
       },
       backgroundImage: {
@@ -48,7 +53,7 @@ export default {
         'premium-sm': '0 4px 20px rgba(0, 0, 0, 0.3)',
         'premium-md': '0 10px 40px rgba(0, 0, 0, 0.4)',
         'premium-lg': '0 20px 60px rgba(0, 0, 0, 0.5)',
-        'glow-amber': '0 0 20px rgba(251, 191, 36, 0.2)',
+        'glow-amber': '0 0 20px rgba(249, 115, 22, 0.2)',
       },
       transitionProperty: {
         'glow': 'box-shadow, background-color',
