@@ -11,7 +11,7 @@ export default function Home() {
         <div className="container-premium">
           <div className="text-center mb-12 md:mb-16 max-w-2xl mx-auto px-4 md:px-0">
             <h2 className="font-bold text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              Why <span className="text-gradient">MagnusBets</span>
+              MagnusBets LIVE - GREEN TEST
             </h2>
             <p className="text-base md:text-lg text-gray-500">
               Built on a foundation of rigorous quantitative analysis and real-world validation.
