@@ -1,0 +1,21 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name magnusbets.com www.magnusbets.com;
+    root /var/www/magnusbets;
+    index index.html dashboard.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    # For static assets
+    location /static/ {
+        expires 1y;
+        add_header Cache-Control &quot;public, immutable&quot;;
+    }
+}

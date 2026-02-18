@@ -1,227 +1,120 @@
-# MagnusBets - Professional NBA Betting Intelligence
+# MagnusBets Setup Guide
 
-A premium web platform for quantitative NBA picks and performance tracking, built with Next.js 15, Tailwind CSS 4, and modern design patterns.
+## 1. Supabase
+1. Create new project at [supabase.com](https://supabase.com)
+2. Wait for DB ready.
+3. **Settings &gt; API**: Copy Project URL and anon/public key.
+4. **Authentication &gt; Settings**: Enable Email provider.
+5. **SQL Editor**: Run:
+```sql
+-- Profiles table
+CREATE TABLE profiles (
+  id UUID REFERENCES auth.users NOT NULL PRIMARY KEY,
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  subscribed BOOLEAN DEFAULT FALSE,
+  stripe_sub_id TEXT
+);
 
-## 🎯 Overview
+-- Enable RLS
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+CREATE POLICY &quot;Users can view own profile&quot; ON profiles FOR SELECT USING (auth.uid() = id);
+CREATE POLICY &quot;Users can update own profile&quot; ON profiles FOR UPDATE USING (auth.uid() = id);
+CREATE POLICY &quot;Users can insert own profile&quot; ON profiles FOR INSERT WITH CHECK (auth.uid() = id);
 
-MagnusBets provides professional-grade quantitative models for NBA betting with:
-- **Daily quantitative picks** backed by multi-model consensus
-- **Verified track record** with transparent methodology
-- **Professional UI/UX** matching industry standards (RAS Picks aesthetic)
-- **Real-time tracking** of picks and performance metrics
-- **Community features** via Discord integration
+-- Picks table
+CREATE TABLE picks (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  date TIMESTAMPTZ NOT NULL,
+  sport TEXT NOT NULL,
+  match TEXT NOT NULL,
+  pick TEXT NOT NULL,
+  odds NUMERIC NOT NULL,
+  stake NUMERIC NOT NULL,
+  result TEXT CHECK (result IN (&#x27;win&#x27;,&#x27;loss&#x27;,&#x27;pending&#x27;)),
+  roi NUMERIC NOT NULL,
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-## ✨ Features
+ALTER TABLE picks ENABLE ROW LEVEL SECURITY;
 
-- 📊 **Track Record Dashboard**: Live performance metrics, ROI, win rate, profit tracking
-- 🎲 **Daily Picks Page**: Real-time quantitative picks with confidence scores
-- 📈 **Performance Analytics**: Breakdown by bet type, monthly trends, confidence analysis
-- 🎨 **Premium Design**: Professional gradient backgrounds, smooth animations, glass-morphism effects
-- 📱 **Responsive Mobile**: Full functionality on all device sizes
-- ✉️ **Waitlist CTA**: Signup modal with status feedback
-- 💼 **Pricing Page**: Multi-tier subscription plans with feature comparison
+-- Public: recent 6 picks
+CREATE POLICY &quot;Public recent picks&quot; ON picks FOR SELECT USING (true) WITH CHECK (false);
+-- Limit in query
 
-## Tech Stack
+-- Subs: all picks
+CREATE POLICY &quot;Subs all picks&quot; ON picks FOR SELECT USING (
+  EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND subscribed = true)
+);
 
-- **Framework**: Next.js 15 (App Router)
-- **UI Library**: React 19 with TypeScript
-- **Styling**: Tailwind CSS 4 with PostCSS
-- **Fonts**: Inter (body), Playfair Display (headers)
-- **Backend**: Supabase (optional, for future features)
-- **Hosting**: Vercel (recommended)
+-- Insert for service (cron)
+CREATE POLICY &quot;Service insert picks&quot; ON picks FOR INSERT WITH CHECK (auth.role() = &#x27;service_role&#x27;);
+```
+6. Paste anon key and URL into `static/js/app.js`
 
-## 🎨 Design Highlights
+## 2. Stripe
+1. [dashboard.stripe.com](https://dashboard.stripe.com) &gt; Products &gt; Add $29/month recurring subscription.
+2. Copy Price ID (price_xxx) and Publishable Key (pk_test_xxx).
+3. Update `static/js/app.js`: STRIPE_PUBLISHABLE_KEY and STRIPE_PRICE_ID.
+4. **Optional but recommended**: Supabase Edge Function for webhook:
+   - Create `supabase/functions/webhook-stripe/index.ts` (use Stripe CLI for security).
 
-### Color Palette
-- **Primary Dark**: `#0a0e27` (Navy)
-- **Secondary Dark**: `#1a1f3a` (Premium Navy)
-- **Accent Gold**: `#d4af37` (Primary accent)
-- **Accent Amber**: `#fbbf24` (Secondary accent)
-
-### Key Design Elements
-- **Glassmorphism**: Semi-transparent cards with backdrop blur
-- **Gradient Backgrounds**: Subtle radial gradients on sections
-- **Smooth Animations**: 
-  - `fade-in`: 0.6s ease-out
-  - `slide-up`: 0.6s ease-out
-  - `pulse-soft`: 3s infinite
-  - `glow`: 2s infinite
-- **Hover Effects**: Cards lift and glow on hover
-- **Typography**: 
-  - Headers: Playfair Display (serif, premium feel)
-  - Body: Inter (modern, clean)
-  - Letter spacing optimized for hierarchy
-
-### Components Redesigned
-1. **Navbar** - Fixed glass-morphism header with smooth transitions
-2. **Hero** - Animated gradient backgrounds with trust badges
-3. **Feature Cards** - Premium stat cards with hover elevation
-4. **Track Record** - Multi-section performance dashboard
-5. **Pricing** - Tiered cards with featured highlight
-6. **Testimonials** - Avatar gradient badges with ratings
-7. **Footer** - Social links and comprehensive footer
-8. **CTAs** - Gradient buttons with glow effects
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ and npm
-- Git
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/mirvin89/Magnusbets.git
-   cd magnusbets-redesign
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build for Production
+## 3. Deploy to VPS (76.13.125.53)
 ```bash
-npm run build
-npm start
+# SSH
+ssh root@76.13.125.53  # or user
+
+# Dir & files
+sudo mkdir -p /var/www/magnusbets/static
+sudo chown -R $USER:$USER /var/www/magnusbets  # adjust user
+
+# Copy files (from local)
+scp index.html dashboard.html static/js/app.js root@76.13.125.53:/var/www/magnusbets/
+scp -r static root@76.13.125.53:/var/www/magnusbets/
+
+# Nginx
+sudo tee /etc/nginx/sites-available/magnusbets &lt;&lt;EOF
+$(cat magnusbets/nginx/magnusbets)
+EOF
+
+sudo ln -sf /etc/nginx/sites-available/magnusbets /etc/nginx/sites-enabled/
+sudo nginx -t &amp;&amp; sudo systemctl reload nginx
+
+# HTTPS
+sudo apt update &amp;&amp; sudo apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx -d magnusbets.com -d www.magnusbets.com
+
+# Node for cron (if not installed)
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+sudo npm i -g @supabase/supabase-js
 ```
 
-## 📁 Project Structure
+## 4. DNS
+- At domain registrar: Add A record `magnusbets.com` → `76.13.125.53` (TTL 300)
+- Add A `www.magnusbets.com` → `76.13.125.53`
 
-```
-src/
-├── app/
-│   ├── page.tsx              # Home page (hero + features + CTA)
-│   ├── track-record/page.tsx # Performance dashboard
-│   ├── picks/page.tsx        # Daily picks page
-│   ├── about/page.tsx        # Methodology page
-│   ├── pricing/page.tsx      # Pricing plans
-│   ├── layout.tsx            # Root layout
-│   └── globals.css           # Global styles
-│
-├── components/
-│   ├── Navbar.tsx            # Fixed navigation header
-│   ├── Hero.tsx              # Hero section with stats
-│   ├── TodayPicks.tsx        # Daily picks display
-│   ├── Footer.tsx            # Footer with links
-│   ├── CTA.tsx               # Call-to-action pricing
-│   ├── Testimonials.tsx      # Member testimonials
-│   ├── SignupModal.tsx       # Waitlist form
-│   └── PerformanceChart.tsx  # Analytics visualization
-│
-└── lib/
-    └── supabase.ts           # Supabase client
-```
-
-## 🎯 Pages
-
-### Home (`/`)
-- Hero section with stats
-- Feature cards
-- Methodology overview
-- Trust metrics
-- Final CTA section
-
-### Track Record (`/track-record`)
-- Key performance metrics
-- Charts and graphs
-- Breakdown by bet type
-- Monthly performance
-- Confidence analysis
-
-### Picks (`/picks`)
-- Daily quantitative picks
-- Confidence scores
-- Bet details and analysis
-- Real-time status
-
-### About (`/about`)
-- Methodology explanation
-- Data pipeline overview
-- Model descriptions
-- Backtesting results
-- Our promise statement
-
-### Pricing (`/pricing`)
-- 3-tier subscription plans
-- Feature comparison
-- FAQ section
-- Contact CTA
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push to GitHub
-2. Connect repository to Vercel
-3. Deploy (automatic on push)
-
+## 5. Cron Picks Upload
+1. Update `scripts/upload-picks.js` with Supabase service_role key (dangerous, use env).
+2. On VPS:
 ```bash
-npm run build
-npm start
+cd /var/www/magnusbets
+sudo npm init -y
+sudo npm i @supabase/supabase-js csv-parser
+cp scripts/upload-picks.js .
+# Test: node upload-picks.js /path/to/new-picks.csv
 ```
-
-## 📊 Future Enhancements
-
-- [ ] Authentication system (Supabase Auth)
-- [ ] User dashboard with history
-- [ ] Advanced filtering and search
-- [ ] Export picks to CSV/PDF
-- [ ] Email notifications
-- [ ] SMS alerts
-- [ ] Mobile app (React Native)
-- [ ] Multi-sport support (NFL, MLB, NHL)
-- [ ] Player props integration
-- [ ] API for third-party integrations
-
-## 🔧 Customization
-
-### Colors
-Edit `tailwind.config.js` to change the color scheme:
-```js
-colors: {
-  'premium-dark': '#0a0e27',
-  'accent-gold': '#d4af37',
-  'accent-amber': '#fbbf24',
-}
+3. Crontab: `crontab -e`
 ```
-
-### Fonts
-Update `src/app/layout.tsx` to change typography:
-```tsx
-const playfair = Playfair_Display({ ... })
-const inter = Inter({ ... })
+0 9 * * * cd /var/www/magnusbets &amp;&amp; /usr/bin/node upload-picks.js /path/to/todays-picks.csv &gt;/dev/null 2&gt;&amp;1
 ```
+Update path to your CSV source.
 
-### Animations
-Modify `tailwind.config.js` keyframes section for animation timing.
+## 6. Test
+- Visit http://76.13.125.53 or magnusbets.com
+- Sign up, subscribe (test mode), check dashboard.
 
-## 📝 License
+## Sample Data
+Upload `data/picks.csv` first via script.
 
-MIT License - Feel free to use this for commercial projects.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📧 Support
-
-- Email: support@magnusbets.com
-- Discord: [Join our community]
-- Twitter: [@MagnusBets]
-
----
-
-**Built with ❤️ using Next.js, React, and Tailwind CSS**
+Site ready! Dark/orange pro betting theme complete.
