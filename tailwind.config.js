@@ -13,9 +13,9 @@ export default {
         'premium-navy': '#1a1f3a',
         'premium-slate': '#2d3748',
 <<<<<<< Updated upstream
-        'accent-gold': '#d4af37',
-        'accent-amber': '#fbbf24',
-        'primary': '#FF9500',
+        'accent-gold': '#059669',
+        'accent-amber': '#0D9488',
+        'primary': '#047857',
 =======
         'accent-gold': '#FF9500',
         'accent-amber': '#f97316',
