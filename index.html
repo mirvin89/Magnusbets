@@ -1,177 +1,132 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;MagnusBets - Quantitative Sports Picks | +38% ROI Backtested&lt;/title&gt;
-    &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;icon&quot; href=&quot;data:image/svg+xml,&lt;svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27&gt;&lt;text y=%27.9em%27 font-size=%2790%27&gt;⚡&lt;/text&gt;&lt;/svg&gt;&quot;&gt;
-&lt;/head&gt;
-&lt;body class=&quot;bg-gradient-to-br from-slate-50 to-emerald-50 min-h-screen font-sans antialiased&quot;&gt;
-    &lt;header class=&quot;bg-white shadow-lg border-b-2 border-emerald-500&quot;&gt;
-        &lt;div class=&quot;max-w-6xl mx-auto px-4 sm:px-6 lg:px-8&quot;&gt;
-            &lt;div class=&quot;flex justify-between items-center py-6&quot;&gt;
-                &lt;div class=&quot;flex items-center space-x-3&quot;&gt;
-                    &lt;div class=&quot;text-3xl&quot;&gt;⚡&lt;/div&gt;
-                    &lt;h1 class=&quot;text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent&quot;&gt;MagnusBets&lt;/h1&gt;
-                    &lt;span class=&quot;bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium&quot;&gt;+38% Spread ROI&lt;/span&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;hidden md:flex space-x-4&quot;&gt;
-                    &lt;a href=&quot;#picks&quot; class=&quot;text-gray-700 hover:text-indigo-600 font-medium&quot;&gt;Picks&lt;/a&gt;
-                    &lt;a href=&quot;#backtest&quot; class=&quot;text-gray-700 hover:text-indigo-600 font-medium&quot;&gt;Backtest&lt;/a&gt;
-                    &lt;a href=&quot;#about&quot; class=&quot;text-gray-700 hover:text-indigo-600 font-medium&quot;&gt;About&lt;/a&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/header&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MagnusBets - Quantitative Sports Picks | 20% ROI Proven</title>
+  <meta name="description" content="Elite sports betting picks from backtested models. MLB 20% ROI, NBA/CBB edges. Transparent track record.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 2rem 0; text-align: center; }
+    h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(45deg, #00ff88, #00cc6a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .roi-badge { display: inline-block; background: #00ff88; color: #000; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 1.2rem; }
+    .section { padding: 4rem 0; }
+    .picks-table { background: #1a1a1a; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #333; }
+    th { background: #2a2a2a; font-weight: 600; }
+    .edge-positive { color: #00ff88; font-weight: 600; }
+    .sub-btn { background: linear-gradient(45deg, #00ff88, #00cc6a); color: #000; border: none; padding: 1rem 3rem; border-radius: 50px; font-size: 1.2rem; font-weight: 600; cursor: pointer; transition: transform 0.3s; }
+    .sub-btn:hover { transform: scale(1.05); }
+    .chart-container { height: 400px; margin: 2rem 0; }
+    @media (max-width: 768px) { h1 { font-size: 2rem; } table { font-size: 0.9rem; } th, td { padding: 0.5rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>MagnusBets</h1>
+      <p>Quantitative Sports Picks | Transparent & Proven</p>
+      <div class="roi-badge">MLB Models: 20.7% ROI (291 Bets)</div>
+    </div>
+  </header>
 
-    &lt;main class=&quot;max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12&quot;&gt;
-        &lt;section id=&quot;picks&quot; class=&quot;mb-20&quot;&gt;
-            &lt;h2 class=&quot;text-4xl font-bold text-gray-900 mb-8 text-center&quot;&gt;Today&#39;s Top Picks&lt;/h2&gt;
-            &lt;div class=&quot;grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8&quot;&gt;
-                &lt;div&gt;
-                    &lt;h3 class=&quot;text-2xl font-semibold text-gray-900 mb-6&quot;&gt;CBB (2/17)&lt;/h3&gt;
-                    &lt;div id=&quot;cbb-picks&quot; class=&quot;overflow-x-auto&quot;&gt;
-                        &lt;table class=&quot;min-w-full bg-white border border-gray-200 rounded-lg shadow-md&quot;&gt;
-                            &lt;thead&gt;
-                                &lt;tr class=&quot;bg-gradient-to-r from-indigo-500 to-purple-500 text-white&quot;&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Game&lt;/th&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Bet&lt;/th&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Price&lt;/th&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Edge&lt;/th&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Models&lt;/th&gt;
-                                &lt;/tr&gt;
-                            &lt;/thead&gt;
-                            &lt;tbody id=&quot;cbb-table-body&quot;&gt;
-                            &lt;/tbody&gt;
-                        &lt;/table&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div&gt;
-                    &lt;h3 class=&quot;text-2xl font-semibold text-gray-900 mb-6&quot;&gt;Sports (Latest)&lt;/h3&gt;
-                    &lt;div id=&quot;nba-picks&quot; class=&quot;overflow-x-auto&quot;&gt;
-                        &lt;table class=&quot;min-w-full bg-white border border-gray-200 rounded-lg shadow-md&quot;&gt;
-                            &lt;thead&gt;
-                                &lt;tr class=&quot;bg-gradient-to-r from-indigo-500 to-purple-500 text-white&quot;&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Game&lt;/th&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Bet&lt;/th&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Price&lt;/th&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;Edge&lt;/th&gt;
-                                    &lt;th class=&quot;px-6 py-4 text-left&quot;&gt;ROI&lt;/th&gt;
-                                &lt;/tr&gt;
-                            &lt;/thead&gt;
-                            &lt;tbody id=&quot;nba-table-body&quot;&gt;
-                            &lt;/tbody&gt;
-                        &lt;/table&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/section&gt;
+  <section class="section">
+    <div class="container">
+      <h2>Today's Top NBA Plays</h2>
+      <div class="picks-table">
+        <table id="picksTable">
+          <thead>
+            <tr>
+              <th>Game</th>
+              <th>Bet</th>
+              <th>Price</th>
+              <th>Edge</th>
+              <th>ROI</th>
+            </tr>
+          </thead>
+          <tbody id="picksBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-        &lt;section id=&quot;backtest&quot; class=&quot;mb-20&quot;&gt;
-            &lt;h2 class=&quot;text-4xl font-bold text-gray-900 mb-8 text-center&quot;&gt;Backtested Performance&lt;/h2&gt;
-            &lt;div class=&quot;grid grid-cols-1 md:grid-cols-2 gap-8&quot;&gt;
-                &lt;div class=&quot;bg-white p-8 rounded-xl shadow-lg border border-gray-200&quot;&gt;
-                    &lt;h3 class=&quot;text-xl font-semibold text-gray-900 mb-4&quot;&gt;Spread Bets&lt;/h3&gt;
-                    &lt;p class=&quot;text-4xl font-bold text-green-600 mb-2&quot;&gt;+38.8%&lt;/p&gt;
-                    &lt;p class=&quot;text-gray-600&quot;&gt;ROI (3 Seasons, 1000+ bets)&lt;/p&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;bg-white p-8 rounded-xl shadow-lg border border-gray-200&quot;&gt;
-                    &lt;h3 class=&quot;text-xl font-semibold text-gray-900 mb-4&quot;&gt;Totals Bets&lt;/h3&gt;
-                    &lt;p class=&quot;text-4xl font-bold text-orange-600 mb-2&quot;&gt;+24.2%&lt;/p&gt;
-                    &lt;p class=&quot;text-gray-600&quot;&gt;ROI (Variable Stake)&lt;/p&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;mt-12 text-center&quot;&gt;
-                &lt;canvas id=&quot;roi-chart&quot; width=&quot;400&quot; height=&quot;200&quot;&gt;&lt;/canvas&gt;
-            &lt;/div&gt;
-        &lt;/section&gt;
+  <section class="section">
+    <div class="container">
+      <h2>ROI Chart</h2>
+      <div class="chart-container">
+        <canvas id="roiChart"></canvas>
+      </div>
+    </div>
+  </section>
 
-        &lt;section id=&quot;about&quot; class=&quot;mb-20&quot;&gt;
-            &lt;h2 class=&quot;text-4xl font-bold text-gray-900 mb-8 text-center&quot;&gt;About MagnusBets&lt;/h2&gt;
-            &lt;div class=&quot;max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed text-center&quot;&gt;
-                &lt;p class=&quot;mb-8&quot;&gt;Quantitative edge from advanced stats (eFG%, Net Rating, Pace, Four Factors) + machine learning models (Logistic, Random Forest). Walk-forward validated, no leakage.&lt;/p&gt;
-                &lt;p class=&quot;mb-8&quot;&gt;Focus: Spreads (top performer). Paper + live tracked. Your edge in NBA &amp; CBB.&lt;/p&gt;
-                &lt;div class=&quot;flex flex-col sm:flex-row gap-4 justify-center&quot;&gt;
-                    &lt;a href=&quot;mailto:mike@magnusbets.com&quot; class=&quot;bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-emerald-700 transition&quot;&gt;Get Alerts (Free)&lt;/a&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;border-2 border-emerald-600 text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-600 hover:text-white transition&quot;&gt;Premium Sub $29/mo&lt;/a&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/section&gt;
-    &lt;/main&gt;
+  <section class="section" style="text-align: center;">
+    <div class="container">
+      <h2>Subscribe for Premium</h2>
+      <p>Daily picks, full models, Discord. $19/mo.</p>
+      <script src="https://js.stripe.com/v3/"></script>
+<script>
+  const stripe = Stripe('pk_live_51T1WUzJWyTHPmSUHPwD75SWGEy8aG2aoM4Bxk3ms0uTxVeJuY05RLPT4kJ87JvZ7l6WDwMetjJRa7KWMZ9LWlnEV0080ziEjgD');
+  function subscribe() {
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'PRICE_ID_HERE', quantity: 1}],
+      mode: 'subscription',
+      successUrl: 'https://magnusbets.com/success?session_id={CHECKOUT_SESSION_ID}',
+      cancelUrl: 'https://magnusbets.com/cancel',
+    }).then((result) => {
+      if (result.error) {
+        alert(result.error.message);
+      }
+    });
+  }
+</script>
+<button class="sub-btn" onclick="subscribe()">Join $19/mo</button>
+    </div>
+  </section>
 
-    &lt;footer class=&quot;bg-gray-900 text-white py-12 mt-20&quot;&gt;
-        &lt;div class=&quot;max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center&quot;&gt;
-            &lt;div class=&quot;text-2xl mb-4&quot;&gt;⚡ MagnusBets&lt;/div&gt;
-            &lt;p&gt;&amp;copy; 2026 MagnusBets. All rights reserved. Gambling problem? Call 1-800-GAMBLER.&lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/footer&gt;
+  <script>
+    // Sample picks from CSV (replace with fetch('/picks.csv'))
+    const picks = [
+      {game: 'Suns @ Spurs', bet: 'OVER 230.5', price: '-108', edge: '5.3%', roi: '19.9%'},
+      {game: 'Raptors @ Bulls', bet: 'OVER 233.5', price: '-112', edge: '4.3%', roi: '19.9%'},
+      {game: 'Nets @ Cavs', bet: 'OVER 229.5', price: '-112', edge: '4.3%', roi: '19.9%'},
+      // Add more...
+    ];
 
-    &lt;script&gt;
-        // Load CBB picks
-        fetch(&#39;cbb_today_top_plays.csv&#39;)
-            .then(r =&gt; r.text())
-            .then(data =&gt; {
-                const lines = data.split(&#39;\\n&#39;).slice(1,6); // Top 5
-                const tbody = document.getElementById(&#39;cbb-table-body&#39;);
-                lines.forEach(line =&gt; {
-                    const [game, bet, models, conf, edge, price] = line.split(&#39;,&#39;);
-                    const row = `&lt;tr class=&quot;hover:bg-gray-50 border-b&quot;&gt;
-                        &lt;td class=&quot;px-6 py-4 font-medium&quot;&gt;${game}&lt;/td&gt;
-                        &lt;td class=&quot;px-6 py-4 font-semibold text-green-600&quot;&gt;${bet}&lt;/td&gt;
-                        &lt;td class=&quot;px-6 py-4&quot;&gt;${price}&lt;/td&gt;
-                        &lt;td class=&quot;px-6 py-4 text-green-600 font-bold&quot;&gt;${Math.round(edge*100)}%&lt;/td&gt;
-                        &lt;td class=&quot;px-6 py-4 bg-blue-100 rounded-full px-3 py-1&quot;&gt;${models}&lt;/td&gt;
-                    &lt;/tr&gt;`;
-                    tbody.innerHTML += row;
-                });
-            });
+    const tbody = document.getElementById('picksBody');
+    picks.forEach(pick => {
+      const row = tbody.insertRow();
+      row.innerHTML = `
+        <td>${pick.game}</td>
+        <td>${pick.bet}</td>
+        <td>${pick.price}</td>
+        <td class="edge-positive">${pick.edge}</td>
+        <td>${pick.roi}</td>
+      `;
+    });
 
-        // Load NBA picks
-        fetch(&#39;today_top_plays.csv&#39;)
-            .then(r =&gt; r.text())
-            .then(data =&gt; {
-                const lines = data.split(&#39;\\n&#39;).slice(1,6);
-                const tbody = document.getElementById(&#39;nba-table-body&#39;);
-                lines.forEach(line =&gt; {
-                    const parts = line.split(&#39;,&#39;);
-                    const game = parts[1];
-                    const bet = parts[2];
-                    const price = parts[3];
-                    const edge = parts[6];
-                    const roi = parts[7];
-                    const row = `&lt;tr class=&quot;hover:bg-gray-50 border-b&quot;&gt;
-                        &lt;td class=&quot;px-6 py-4 font-medium&quot;&gt;${game}&lt;/td&gt;
-                        &lt;td class=&quot;px-6 py-4 font-semibold text-green-600&quot;&gt;${bet}&lt;/td&gt;
-                        &lt;td class=&quot;px-6 py-4&quot;&gt;${price}&lt;/td&gt;
-                        &lt;td class=&quot;px-6 py-4 text-green-600 font-bold&quot;&gt;${Math.round(edge*100)}%&lt;/td&gt;
-                        &lt;td class=&quot;px-6 py-4 text-blue-600 font-bold&quot;&gt;+${Math.round(roi)}%&lt;/td&gt;
-                    &lt;/tr&gt;`;
-                    tbody.innerHTML += row;
-                });
-            });
+    // ROI Chart (MLB strats sample)
+    const ctx = document.getElementById('roiChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['RF Dog', 'XGB Batting', 'LR Dog', 'GBM Home'],
+        datasets: [{
+          label: 'ROI %',
+          data: [20.7, 20.5, 18.5, 15.9],
+          backgroundColor: 'rgba(0, 255, 136, 0.8)'
+        }]
+      },
+      options: { scales: { y: { beginAtZero: true } } }
+    });
 
-        // ROI Chart
-        const ctx = document.getElementById(&#39;roi-chart&#39;).getContext(&#39;2d&#39;);
-        new Chart(ctx, {
-            type: &#39;bar&#39;,
-            data: {
-                labels: [&#39;Spread&#39;, &#39;Totals&#39;, &#39;ML&#39;],
-                datasets: [{
-                    data: [38.8, 24.2, 15.7],
-                    backgroundColor: [&#39;#10B981&#39;, &#39;#F59E0B&#39;, &#39;#3B82F6&#39;],
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { beginAtZero: true, max: 50, ticks: { color: &#39;gray&#39; } }
-                }
-            }
-        });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    function subscribe() { alert('Stripe checkout... (integrate real)'); }
+  </script>
+</body>
+</html>
