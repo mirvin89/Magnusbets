@@ -1,24 +1,120 @@
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import Hero from '@/components/Hero'
 
+' use client'
+
 export default function Home() {
+  const [picks, setPicks] = useState([])
+
+  useEffect(() =&gt; {
+    fetch('/today_top_plays.csv')
+      .then(r =&gt; r.text())
+      .then(text =&gt; {
+        const lines = text.trim().split('\n').slice(1)
+        const parsed = lines.map(line =&gt; {
+          const cols = line.split(',')
+          return {
+            game: cols[1],
+            bet: cols[2],
+            price: cols[3],
+            models: cols[4],
+            edge: parseFloat(cols[6] || 0).toFixed(1),
+            conf: parseFloat(cols[5] || 0).toFixed(1)
+          }
+        }).slice(0, 5)
+        setPicks(parsed)
+      })
+      .catch(console.error)
+  }, [])
+
+  const mlbStrats = [
+    {name: 'RF any_dog &gt;20%', roi: 20.7, bets: 291},
+    {name: 'XGB batting home_dog &gt;20%', roi: 20.5, bets: 200},
+    {name: 'LR away_dog &gt;10% Med Dog', roi: 18.5, bets: 160},
+    {name: 'Batting GBM home_dog &gt;20%', roi: 15.9, bets: 673},
+    {name: 'GBM_Reg totals &gt;2.5R', roi: 14.0, bets: 500},
+  ]
+
+  const maxRoi = 25
+
   return (
-    <>
-      <Hero />
+    &lt;&gt;
+      &lt;Hero /&gt;
 
-      {/* Why MagnusBets - Benefits Section */}
-      <section className="py-24 md:py-40 border-b border-blue-500/10">
-        <div className="container-premium">
-          <div className="text-center mb-12 md:mb-16 max-w-2xl mx-auto px-4 md:px-0">
-            <h2 className="font-bold text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              MagnusBets LIVE - GREEN TEST
-            </h2>
-            <p className="text-base md:text-lg text-gray-500">
-              Built on a foundation of rigorous quantitative analysis and real-world validation.
-            </p>
-          </div>
+      {/* NBA Top Plays */}
+      &lt;section className="py-16 md:py-24 bg-gradient-to-b from-gray-900 to-gray-950 border-b border-blue-500/20"&gt;
+        &lt;div className="container-premium px-4 md:px-0"&gt;
+          &lt;h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center"&gt;
+            Today's Top 5 NBA Picks
+          &lt;/h2&gt;
+          &lt;div className="overflow-x-auto"&gt;
+            &lt;table className="w-full table-auto border-collapse bg-gray-800/50 rounded-xl backdrop-blur"&gt;
+              &lt;thead&gt;
+                &lt;tr className="bg-gradient-to-r from-blue-600 to-blue-700"&gt;
+                  &lt;th className="p-4 text-left text-white font-bold"&gt;Game&lt;/th&gt;
+                  &lt;th className="p-4 text-left text-white font-bold"&gt;Bet&lt;/th&gt;
+                  &lt;th className="p-4 text-left text-white font-bold"&gt;Price&lt;/th&gt;
+                  &lt;th className="p-4 text-left text-white font-bold"&gt;Edge %&lt;/th&gt;
+                  &lt;th className="p-4 text-left text-white font-bold"&gt;Models&lt;/th&gt;
+                &lt;/tr&gt;
+              &lt;/thead&gt;
+              &lt;tbody&gt;
+                {picks.map((pick, idx) =&gt; (
+                  &lt;tr key={idx} className="border-t border-gray-700 hover:bg-gray-700/50 transition-colors"&gt;
+                    &lt;td className="p-4 text-gray-200"&gt;{pick.game}&lt;/td&gt;
+                    &lt;td className="p-4 text-gray-100 font-semibold"&gt;{pick.bet}&lt;/td&gt;
+                    &lt;td className="p-4 text-gray-200"&gt;{pick.price}&lt;/td&gt;
+                    &lt;td className="p-4 text-green-400 font-bold"&gt;{pick.edge}&lt;/td&gt;
+                    &lt;td className="p-4 text-gray-200"&gt;{pick.models}&lt;/td&gt;
+                  &lt;/tr&gt;
+                ))}
+              &lt;/tbody&gt;
+            &lt;/table&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 px-4 md:px-0">
+      {/* MLB ROI Chart */}
+      &lt;section className="py-16 md:py-24 bg-gray-900/50 border-b border-blue-500/20"&gt;
+        &lt;div className="container-premium px-4 md:px-0"&gt;
+          &lt;h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center"&gt;
+            MLB Model ROIs (2023-25 Backtest)
+          &lt;/h2&gt;
+          &lt;p className="text-gray-400 mb-12 text-center text-lg"&gt;Top strategies with verified ROI ≥14%&lt;/p&gt;
+          &lt;div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto"&gt;
+            {mlbStrats.map((strat, idx) =&gt; (
+              &lt;div key={idx} className="flex items-center gap-6 p-6 bg-gray-800/50 rounded-xl backdrop-blur border border-gray-700 hover:border-blue-500/50 transition-all group"&gt;
+                &lt;div className="flex-1 bg-gray-700 rounded-full h-10 relative overflow-hidden"&gt;
+                  &lt;div 
+                    className="h-full bg-gradient-to-r from-emerald-400 via-green-500 to-blue-500 rounded-full shadow-lg transition-all group-hover:scale-x-105 origin-left"
+                    style={{ width: `${(strat.roi / maxRoi) * 100}%` }}
+                  /&gt;
+                &lt;/div&gt;
+                &lt;div className="text-right min-w-0 flex-1"&gt;
+                  &lt;div className="text-2xl font-bold text-white truncate mb-1"&gt;{strat.roi}%&lt;/div&gt;
+                  &lt;div className="text-sm text-gray-400"&gt;{strat.name}&lt;/div&gt;
+                  &lt;div className="text-xs text-gray-500"&gt;({strat.bets} bets)&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            ))}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      {/* Keep existing sections but darken */}
+      &lt;section className="py-24 md:py-40 border-b border-blue-500/10 bg-gray-900/20"&gt;
+        &lt;div className="container-premium"&gt;
+          &lt;div className="text-center mb-12 md:mb-16 max-w-2xl mx-auto px-4 md:px-0"&gt;
+            &lt;h2 className="font-bold text-4xl md:text-5xl mb-4 text-white"&gt;
+              Why MagnusBets
+            &lt;/h2&gt;
+            &lt;p className="text-base md:text-lg text-gray-300"&gt;
+              Built on rigorous quantitative analysis and real-world validation.
+            &lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 px-4 md:px-0"&gt;
             {[
               {
                 icon: '✓',
@@ -35,212 +131,85 @@ export default function Home() {
                 title: 'Professional Grade',
                 description: 'Built by quantitative analysts. Multi-model consensus. Risk management included.',
               },
-            ].map((feature, idx) => (
-              <div key={idx} className="card-premium group p-12 hover:shadow-xl transition-all">
-                <div className="w-12 md:w-14 h-12 md:h-14 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-xl md:text-2xl font-bold text-gray-900 mb-4">
+            ].map((feature, idx) =&gt; (
+              &lt;div key={idx} className="card-premium group p-12 hover:shadow-xl transition-all bg-gray-800/50 backdrop-blur border border-gray-700 hover:border-blue-500/50 rounded-xl"&gt;
+                &lt;div className="w-12 md:w-14 h-12 md:h-14 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-xl md:text-2xl font-bold text-white mb-4"&gt;
                   {feature.icon}
-                </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">
+                &lt;/div&gt;
+                &lt;h3 className="text-lg md:text-xl font-bold text-white mb-3"&gt;
                   {feature.title}
-                </h3>
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                &lt;/h3&gt;
+                &lt;p className="text-sm md:text-base text-gray-300 leading-relaxed"&gt;
                   {feature.description}
-                </p>
-              </div>
+                &lt;/p&gt;
+              &lt;/div&gt;
             ))}
-          </div>
-        </div>
-      </section>
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
 
-      {/* Problem / Solution Section */}
-      <section className="py-24 md:py-40 bg-cyan-950/20 border-b border-blue-500/10">
-        <div className="container-premium px-4 md:px-0">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-bold text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              The Problem
-            </h2>
-            <p className="text-base md:text-lg text-gray-500 mb-8 leading-relaxed">
-              Most sports bettors lose money because they rely on intuition, bias, and incomplete information. Vegas odds are set by professionals with unlimited data. You need an edge—not luck.
-            </p>
+      {/* Pricing with Stripe */}
+      &lt;section className="py-24 md:py-40 border-b border-blue-500/10 bg-gray-900/20"&gt;
+        &lt;div className="container-premium px-4 md:px-0"&gt;
+          &lt;h2 className="font-bold text-3xl md:text-4xl mb-12 md:mb-16 text-white text-center"&gt;
+            Pro Subscription - $19/month
+          &lt;/h2&gt;
 
-            <h2 className="font-bold text-3xl md:text-4xl font-bold mb-4 text-gray-900 mt-12">
-              Our Solution
-            </h2>
-            <p className="text-base md:text-lg text-gray-500 mb-8 leading-relaxed">
-              Quantitative models trained on years of historical data. We identify market inefficiencies where odds diverge from true probabilities. Every pick is transparent, tracked, and backed by math—not gut feel.
-            </p>
+          &lt;div className="max-w-2xl mx-auto"&gt;
+            &lt;div className="card-premium p-8 md:p-12 bg-gray-800/50 backdrop-blur border border-gray-700 rounded-xl"&gt;
+              &lt;h3 className="text-3xl md:text-4xl font-bold text-white mb-4"&gt;$19&lt;span className="text-2xl text-gray-400"&gt;/month&lt;/span&gt;&lt;/h3&gt;
+              &lt;p className="text-gray-300 mb-8"&gt;Unlock full access to daily picks, model details, and premium features.&lt;/p&gt;
 
-            <div className="mt-10 pt-10 border-t border-blue-500/10">
-              <h3 className="font-bold text-2xl md:text-3xl font-bold mb-6 text-gray-900">What You Get</h3>
-              <ul className="space-y-4">
+              &lt;ul className="space-y-4 mb-10"&gt;
                 {[
-                  'Daily NBA picks with confidence scores',
-                  'Real-time tracking of all plays and results',
-                  'Access to our validated quantitative models',
-                  'Community of professional bettors',
-                  'Complete transparency on methodology',
-                  'Mobile app for instant notifications',
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <span className="text-cyan-400 font-bold text-lg mt-0.5">✓</span>
-                    <span className="text-base text-gray-500">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Methodology / How It Works */}
-      <section className="py-24 md:py-40 border-b border-blue-500/10">
-        <div className="container-premium px-4 md:px-0">
-          <h2 className="font-bold text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
-            How It Works
-          </h2>
-
-          <div className="max-w-3xl mx-auto space-y-6">
-            {[
-              {
-                step: '01',
-                title: 'Multi-Model Consensus',
-                description: 'Multiple quantitative models analyze team performance, player metrics, matchups, and historical patterns to generate predictions.',
-              },
-              {
-                step: '02',
-                title: 'Edge Detection',
-                description: 'We identify true edge: where market odds diverge from our calculated probabilities by 3%+, indicating a mispriced bet.',
-              },
-              {
-                step: '03',
-                title: 'Risk Management',
-                description: 'Every pick includes position sizing, confidence scores, and risk-adjusted returns to maximize long-term profitability.',
-              },
-              {
-                step: '04',
-                title: 'Continuous Improvement',
-                description: 'Models are backtested, validated, and refined based on real outcomes. We learn from every bet.',
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-6 items-start">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 text-gray-900 font-bold text-sm">
-                    {item.step}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof / Testimonials */}
-      <section className="py-24 md:py-40 bg-cyan-950/20 border-b border-blue-500/10">
-        <div className="container-premium px-4 md:px-0">
-          <h2 className="font-bold text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
-            Trusted by Professional Bettors
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {[
-              { value: '1,200+', label: 'Active Members' },
-              { value: '10/18', label: 'Win Rate (Feb 2026)' },
-              { value: '+$219', label: 'Total Profit' },
-            ].map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-gradient mb-2">{stat.value}</div>
-                <p className="text-gray-600 font-medium">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <div className="card-premium p-8 md:p-10">
-              <p className="text-lg text-gray-500 mb-6 leading-relaxed italic">
-                "I've been using MagnusBets for 6 weeks now. The transparency is unreal. I can see exactly how each model votes on every play. Finally, a betting service that's not trying to hide anything."
-              </p>
-              <div>
-                <p className="font-bold text-gray-900">— Michael R., Professional Bettor</p>
-                <p className="text-sm text-gray-600">Turned $500 into $1,240 in 2 months</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services / Pricing Structure */}
-      <section className="py-24 md:py-40 border-b border-blue-500/10">
-        <div className="container-premium px-4 md:px-0">
-          <h2 className="font-bold text-3xl md:text-4xl font-bold mb-12 md:mb-16 text-gray-900 text-center">
-            Simple Pricing
-          </h2>
-
-          <div className="max-w-2xl mx-auto">
-            <div className="card-premium p-8 md:p-12">
-              <div className="inline-block mb-6 px-3 py-1 bg-blue-500/20 rounded text-sm font-semibold text-cyan-300">
-                Free Beta
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">$0/month</h3>
-              <p className="text-gray-500 mb-8">Get started with zero risk. Full access during beta.</p>
-
-              <ul className="space-y-4 mb-10">
-                {[
-                  'Daily NBA predictions',
-                  'Complete model transparency',
-                  'Real-time play tracking',
-                  'Access to all historical data',
-                  'Community Discord',
+                  'Daily NBA &amp; MLB picks',
+                  'Live tracking &amp; results',
+                  'Model transparency &amp; edges',
+                  'Advanced stats &amp; backtests',
+                  'Priority Discord access',
                   'Mobile notifications',
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <span className="text-cyan-400 font-bold">✓</span>
-                    <span className="text-gray-500">{item}</span>
-                  </li>
+                ].map((item, idx) =&gt; (
+                  &lt;li key={idx} className="flex items-center gap-3"&gt;
+                    &lt;span className="text-emerald-400 font-bold text-lg"&gt;✓&lt;/span&gt;
+                    &lt;span className="text-gray-300"&gt;{item}&lt;/span&gt;
+                  &lt;/li&gt;
                 ))}
-              </ul>
+              &lt;/ul&gt;
 
-              <Link href="/auth" className="btn-primary w-full py-3 text-center block">
-                Join Free Beta
-              </Link>
-              <p className="text-xs text-gray-500 text-center mt-4">
-                No credit card required. Cancel anytime.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+              &lt;button className="stripe-sub w-full py-4 px-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all text-lg backdrop-blur border border-purple-500/50"&gt;
+                Subscribe $19/mo via Stripe
+              &lt;/button&gt;
+              &lt;p className="text-xs text-gray-500 text-center mt-4"&gt;
+                Secure checkout. Cancel anytime. 7-day money-back guarantee.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
 
-      {/* Final CTA / Action Banner */}
-      <section className="py-24 md:py-40 bg-gradient-to-b from-cyan-950/30 to-black/80">
-        <div className="container-premium px-4 md:px-0 text-center">
-          <h2 className="font-bold text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-            Stop Guessing. Start <span className="text-gradient">Winning</span>.
-          </h2>
-          <p className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto">
-            Join 1,200+ bettors using quantitative models for real edge. Free beta access right now.
-          </p>
+      {/* Final CTA */}
+      &lt;section className="py-24 md:py-40 bg-gradient-to-b from-gray-900 to-black/90"&gt;
+        &lt;div className="container-premium px-4 md:px-0 text-center"&gt;
+          &lt;h2 className="font-bold text-4xl md:text-5xl mb-6 text-white"&gt;
+            Join Pro Bettors Winning with Data
+          &lt;/h2&gt;
+          &lt;p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto"&gt;
+            Quantitative edge for NBA &amp; MLB. Verified models, transparent results.
+          &lt;/p&gt;
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/auth" className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-gray-900 font-bold rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all inline-block">
-              Get Started Free →
-            </Link>
-            <Link
+          &lt;div className="flex flex-col sm:flex-row gap-4 justify-center"&gt;
+            &lt;button className="stripe-sub px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all text-lg"&gt;
+              Start Free Trial →
+            &lt;/button&gt;
+            &lt;Link
               href="/track-record"
-              className="px-8 py-3 border-2 border-blue-500/50 text-cyan-300 font-bold rounded-lg hover:border-cyan-400 hover:bg-blue-500/10 transition-colors"
-            >
+              className="px-8 py-4 border-2 border-blue-500/50 text-blue-300 font-bold rounded-xl hover:border-blue-400 hover:bg-blue-500/10 transition-all backdrop-blur"
+            &gt;
               View Track Record
-            </Link>
-          </div>
-
-          <p className="text-sm text-gray-500 mt-8">
-            Real results. Real transparency. Real edge.
-          </p>
-        </div>
-      </section>
-    </>
+            &lt;/Link&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/&gt;
   )
 }
