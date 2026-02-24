@@ -1,132 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MagnusBets - Quantitative Sports Picks | 20% ROI Proven</title>
-  <meta name="description" content="Elite sports betting picks from backtested models. MLB 20% ROI, NBA/CBB edges. Transparent track record.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 2rem 0; text-align: center; }
-    h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(45deg, #00ff88, #00cc6a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .roi-badge { display: inline-block; background: #00ff88; color: #000; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 1.2rem; }
-    .section { padding: 4rem 0; }
-    .picks-table { background: #1a1a1a; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #333; }
-    th { background: #2a2a2a; font-weight: 600; }
-    .edge-positive { color: #00ff88; font-weight: 600; }
-    .sub-btn { background: linear-gradient(45deg, #00ff88, #00cc6a); color: #000; border: none; padding: 1rem 3rem; border-radius: 50px; font-size: 1.2rem; font-weight: 600; cursor: pointer; transition: transform 0.3s; }
-    .sub-btn:hover { transform: scale(1.05); }
-    .chart-container { height: 400px; margin: 2rem 0; }
-    @media (max-width: 768px) { h1 { font-size: 2rem; } table { font-size: 0.9rem; } th, td { padding: 0.5rem; } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagnusBets - Professional Sports Betting Picks</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>MagnusBets</h1>
-      <p>Quantitative Sports Picks | Transparent & Proven</p>
-      <div class="roi-badge">MLB Models: 20.7% ROI (291 Bets)</div>
-    </div>
-  </header>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">⚡ MagnusBets</div>
+            <ul class="nav-links">
+                <li><a href="#picks">Today's Picks</a></li>
+                <li><a href="#performance">Performance</a></li>
+                <li><a href="#subscribe">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <section class="section">
-    <div class="container">
-      <h2>Today's Top NBA Plays</h2>
-      <div class="picks-table">
-        <table id="picksTable">
-          <thead>
-            <tr>
-              <th>Game</th>
-              <th>Bet</th>
-              <th>Price</th>
-              <th>Edge</th>
-              <th>ROI</th>
-            </tr>
-          </thead>
-          <tbody id="picksBody">
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Professional Sports Betting Models</h1>
+            <p class="tagline">Data-driven picks with proven ROI</p>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>51.0%</h3>
+                    <p>Win Rate</p>
+                </div>
+                <div class="stat-box">
+                    <h3>+$359</h3>
+                    <p>Cumulative P&L</p>
+                </div>
+                <div class="stat-box">
+                    <h3>49 Picks</h3>
+                    <p>Tracked</p>
+                </div>
+                <div class="stat-box">
+                    <h3>20.7%</h3>
+                    <p>Best ROI (MLB)</p>
+                </div>
+            </div>
 
-  <section class="section">
-    <div class="container">
-      <h2>ROI Chart</h2>
-      <div class="chart-container">
-        <canvas id="roiChart"></canvas>
-      </div>
-    </div>
-  </section>
+            <a href="#subscribe" class="cta-button">Get Premium Picks</a>
+        </div>
+    </section>
 
-  <section class="section" style="text-align: center;">
-    <div class="container">
-      <h2>Subscribe for Premium</h2>
-      <p>Daily picks, full models, Discord. $19/mo.</p>
-      <script src="https://js.stripe.com/v3/"></script>
-<script>
-  const stripe = Stripe('pk_live_51T1WUzJWyTHPmSUHPwD75SWGEy8aG2aoM4Bxk3ms0uTxVeJuY05RLPT4kJ87JvZ7l6WDwMetjJRa7KWMZ9LWlnEV0080ziEjgD');
-  function subscribe() {
-    stripe.redirectToCheckout({
-      lineItems: [{price: 'PRICE_ID_HERE', quantity: 1}],
-      mode: 'subscription',
-      successUrl: 'https://magnusbets.com/success?session_id={CHECKOUT_SESSION_ID}',
-      cancelUrl: 'https://magnusbets.com/cancel',
-    }).then((result) => {
-      if (result.error) {
-        alert(result.error.message);
-      }
-    });
-  }
-</script>
-<button class="sub-btn" onclick="subscribe()">Join $19/mo</button>
-    </div>
-  </section>
+    <!-- Today's Picks -->
+    <section class="picks" id="picks">
+        <div class="container">
+            <h2>Today's Top Plays</h2>
+            <p class="section-subtitle">February 24, 2026</p>
 
-  <script>
-    // Sample picks from CSV (replace with fetch('/picks.csv'))
-    const picks = [
-      {game: 'Suns @ Spurs', bet: 'OVER 230.5', price: '-108', edge: '5.3%', roi: '19.9%'},
-      {game: 'Raptors @ Bulls', bet: 'OVER 233.5', price: '-112', edge: '4.3%', roi: '19.9%'},
-      {game: 'Nets @ Cavs', bet: 'OVER 229.5', price: '-112', edge: '4.3%', roi: '19.9%'},
-      // Add more...
-    ];
+            <div class="picks-grid">
+                <!-- NBA Picks -->
+                <div class="pick-card">
+                    <div class="pick-header">
+                        <span class="sport-badge nba">NBA</span>
+                        <span class="edge-badge">+5.6pp</span>
+                    </div>
+                    <h3>Timberwolves/Trail Blazers OVER 236.5</h3>
+                    <p class="pick-details">
+                        <strong>Odds:</strong> -108<br>
+                        <strong>Confidence:</strong> 57.5%<br>
+                        <strong>ROI:</strong> 19.9%
+                    </p>
+                    <p class="pick-reasoning">5 models backing this total. Blazers trend toward high-scoring games with elite perimeter players.</p>
+                </div>
 
-    const tbody = document.getElementById('picksBody');
-    picks.forEach(pick => {
-      const row = tbody.insertRow();
-      row.innerHTML = `
-        <td>${pick.game}</td>
-        <td>${pick.bet}</td>
-        <td>${pick.price}</td>
-        <td class="edge-positive">${pick.edge}</td>
-        <td>${pick.roi}</td>
-      `;
-    });
+                <!-- Spread Pick -->
+                <div class="pick-card">
+                    <div class="pick-header">
+                        <span class="sport-badge nba">NBA</span>
+                        <span class="edge-badge">+4.4pp</span>
+                    </div>
+                    <h3>76ers -10.5 @ Pacers</h3>
+                    <p class="pick-details">
+                        <strong>Odds:</strong> -102<br>
+                        <strong>Confidence:</strong> 54.9%<br>
+                        <strong>ROI:</strong> 25.7%
+                    </p>
+                    <p class="pick-reasoning">4 models agree. Pacers thin at guard depth. 76ers elite defense should dominate.</p>
+                </div>
 
-    // ROI Chart (MLB strats sample)
-    const ctx = document.getElementById('roiChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['RF Dog', 'XGB Batting', 'LR Dog', 'GBM Home'],
-        datasets: [{
-          label: 'ROI %',
-          data: [20.7, 20.5, 18.5, 15.9],
-          backgroundColor: 'rgba(0, 255, 136, 0.8)'
-        }]
-      },
-      options: { scales: { y: { beginAtZero: true } } }
-    });
+                <!-- CBB Picks -->
+                <div class="pick-card">
+                    <div class="pick-header">
+                        <span class="sport-badge cbb">CBB</span>
+                        <span class="edge-badge">+19.3pp</span>
+                    </div>
+                    <h3>Xavier/Providence OVER 170.5</h3>
+                    <p class="pick-details">
+                        <strong>Odds:</strong> -110<br>
+                        <strong>Models:</strong> 6<br>
+                        <strong>Status:</strong> Postponed to 2/25
+                    </p>
+                    <p class="pick-reasoning">Weather postponement. Rolls to tomorrow. Strong 6-model consensus.</p>
+                </div>
 
-    function subscribe() { alert('Stripe checkout... (integrate real)'); }
-  </script>
+                <!-- PGA Picks -->
+                <div class="pick-card">
+                    <div class="pick-header">
+                        <span class="sport-badge pga">PGA</span>
+                        <span class="edge-badge">+47.4pp</span>
+                    </div>
+                    <h3>Shane Lowry Top 20 @ +120</h3>
+                    <p class="pick-details">
+                        <strong>Cognizant Classic (Tue 2/24)</strong><br>
+                        <strong>PGA National</strong><br>
+                        <strong>Model Prob:</strong> 92.8%
+                    </p>
+                    <p class="pick-reasoning">Lowry elite at approach play (35% weight at PGA Nat). T2-T5-T4-T11 last 4 years here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Tracker -->
+    <section class="performance" id="performance">
+        <div class="container">
+            <h2>Season Performance</h2>
+            
+            <div class="performance-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sport</th>
+                            <th>Record</th>
+                            <th>Win Rate</th>
+                            <th>P&L</th>
+                            <th>ROI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>NBA</strong></td>
+                            <td>21-17</td>
+                            <td>55.3%</td>
+                            <td>+$230</td>
+                            <td>+2.4%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CBB</strong></td>
+                            <td>4-7</td>
+                            <td>36.4%</td>
+                            <td>-$361</td>
+                            <td>-9.1%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Overall</strong></td>
+                            <td>25-24</td>
+                            <td>51.0%</td>
+                            <td>+$359</td>
+                            <td>+1.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="chart-placeholder">
+                <p>📊 P&L Chart Coming Soon</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe" id="subscribe">
+        <div class="container">
+            <h2>Get Premium Picks</h2>
+            <p class="section-subtitle">Access daily picks before odds move</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Monthly</h3>
+                    <div class="price">$29<span>/mo</span></div>
+                    <ul class="features">
+                        <li>✓ Daily picks (NBA, CBB, MLB)</li>
+                        <li>✓ Live picks feed</li>
+                        <li>✓ Performance tracking</li>
+                        <li>✓ Email alerts</li>
+                    </ul>
+                    <button class="subscribe-btn" onclick="alert('Stripe integration coming soon')">Subscribe Now</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <span class="badge">BEST VALUE</span>
+                    <h3>Quarterly</h3>
+                    <div class="price">$74<span>/3mo</span></div>
+                    <ul class="features">
+                        <li>✓ Daily picks (NBA, CBB, MLB)</li>
+                        <li>✓ Live picks feed</li>
+                        <li>✓ Performance tracking</li>
+                        <li>✓ Email alerts</li>
+                        <li>✓ 15% discount</li>
+                    </ul>
+                    <button class="subscribe-btn featured-btn" onclick="alert('Stripe integration coming soon')">Subscribe Now</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Annual</h3>
+                    <div class="price">$249<span>/year</span></div>
+                    <ul class="features">
+                        <li>✓ Daily picks (NBA, CBB, MLB)</li>
+                        <li>✓ Live picks feed</li>
+                        <li>✓ Performance tracking</li>
+                        <li>✓ Email alerts</li>
+                        <li>✓ 29% discount</li>
+                    </ul>
+                    <button class="subscribe-btn" onclick="alert('Stripe integration coming soon')">Subscribe Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 MagnusBets. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Disclaimer</a> | <a href="#">Contact</a> | <a href="#">@MagnusBets</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
