@@ -4,8 +4,17 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import Hero from '@/components/Hero'
 
+interface Pick {
+  game: string
+  bet: string
+  price: string
+  models: string
+  edge: string
+  conf: string
+}
+
 export default function Home() {
-  const [picks, setPicks] = useState([])
+  const [picks, setPicks] = useState<Pick[]>([])
 
   useEffect(() => {
     fetch('/today_top_plays.csv')
