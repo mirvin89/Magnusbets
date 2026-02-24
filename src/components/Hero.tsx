@@ -1,56 +1,51 @@
 'use client'
 
-import { useState } from 'react'
-import AuthModal from './AuthModal'
-
 export default function Hero() {
-  const [authOpen, setAuthOpen] = useState(false)
-
   return (
-    <>
-      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
-      <section className="pt-24 md:pt-32 pb-24 md:pb-40 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="container-premium max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
-            <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-6 md:mb-8 bg-gradient-to-r from-gray-900 to-slate-700 bg-clip-text text-transparent leading-tight tracking-tight">
-              Quantitative Sports Picks
-            </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-8 md:mb-12 font-medium leading-relaxed">
-              Pro models meet verified results. 55% win rate. +38% ROI on spreads. Beat Vegas lines.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
-              <button 
-                onClick={() => setAuthOpen(true)} 
-                className="btn-primary inline-block px-12 py-6 md:py-8 text-lg md:text-xl font-bold shadow-xl hover:shadow-2xl transition-all"
-              >
-                Join Free Beta
-              </button>
-              <a href="#results" className="px-12 py-6 md:py-8 border-3 border-gray-200 text-gray-900 text-lg font-bold rounded-xl hover:bg-white hover:shadow-lg transition-all">
-                See Verified Results →
-              </a>
-            </div>
-            {/* Stats grid like raspicks */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <span className="text-3xl md:text-4xl font-bold text-blue-600 block">55%</span>
-                <p className="text-sm text-gray-500 uppercase tracking-wide">Win Rate</p>
-              </div>
-              <div>
-                <span className="text-3xl md:text-4xl font-bold text-green-600 block">+38%</span>
-                <p className="text-sm text-gray-500 uppercase tracking-wide">ROI</p>
-              </div>
-              <div>
-                <span className="text-3xl md:text-4xl font-bold text-purple-600 block">+$2.4k</span>
-                <p className="text-sm text-gray-500 uppercase tracking-wide">Paper P&L</p>
-              </div>
-              <div>
-                <span className="text-3xl md:text-4xl font-bold text-indigo-600 block">14</span>
-                <p className="text-sm text-gray-500 uppercase tracking-wide">Models</p>
-              </div>
-            </div>
+    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-purple-600/20 blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
+            Professional Sports Betting Models
+          </h1>
+          <p className="text-xl sm:text-2xl text-gray-300 mb-8">
+            Data-driven picks with proven ROI
+          </p>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6">
+            <div className="text-3xl font-bold text-cyan-400 mb-2">51.0%</div>
+            <div className="text-sm text-gray-400">Win Rate</div>
+          </div>
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6">
+            <div className="text-3xl font-bold text-green-400 mb-2">+$359</div>
+            <div className="text-sm text-gray-400">Cumulative P&L</div>
+          </div>
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6">
+            <div className="text-3xl font-bold text-purple-400 mb-2">49</div>
+            <div className="text-sm text-gray-400">Picks Tracked</div>
+          </div>
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6">
+            <div className="text-3xl font-bold text-orange-400 mb-2">20.7%</div>
+            <div className="text-sm text-gray-400">Best ROI</div>
           </div>
         </div>
-      </section>
-    </>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+            Get Premium Picks
+          </button>
+          <button className="px-8 py-4 border-2 border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white font-bold rounded-lg transition-all duration-300">
+            View Results
+          </button>
+        </div>
+      </div>
+    </section>
   )
 }
