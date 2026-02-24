@@ -1,8 +1,8 @@
+"use client"
+
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import Hero from '@/components/Hero'
-
-"use client"'
 
 export default function Home() {
   const [picks, setPicks] = useState([])
