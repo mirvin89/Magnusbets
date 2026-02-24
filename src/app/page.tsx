@@ -19,8 +19,8 @@ export default function Home() {
             bet: cols[2],
             price: cols[3],
             models: cols[4],
-            edge: parseFloat(cols[6] || 0).toFixed(1),
-            conf: parseFloat(cols[5] || 0).toFixed(1)
+            edge: parseFloat(cols[6] || '0').toFixed(1),
+            conf: parseFloat(cols[5] || '0').toFixed(1)
           }
         }).slice(0, 5)
         setPicks(parsed)
