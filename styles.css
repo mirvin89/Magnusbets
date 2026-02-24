@@ -1,0 +1,420 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #1a1a2e;
+    --secondary: #16213e;
+    --accent: #0f3460;
+    --highlight: #e94560;
+    --success: #00d4ff;
+    --text: #eaeaea;
+    --text-dim: #b0b0b0;
+    --bg: #0f0f1e;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--primary);
+    border-bottom: 1px solid var(--accent);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--success);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--success);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.tagline {
+    font-size: 1.3rem;
+    color: var(--text-dim);
+    margin-bottom: 3rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.stat-box {
+    background-color: var(--accent);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--success);
+}
+
+.stat-box h3 {
+    font-size: 2rem;
+    color: var(--success);
+    margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+    color: var(--text-dim);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--highlight);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #ff5a7e;
+}
+
+/* Picks Section */
+.picks {
+    padding: 4rem 0;
+}
+
+.picks h2, .performance h2, .subscribe h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.section-subtitle {
+    color: var(--text-dim);
+    margin-bottom: 3rem;
+}
+
+.picks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.pick-card {
+    background-color: var(--primary);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.pick-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--success);
+}
+
+.pick-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sport-badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.sport-badge.nba {
+    background-color: #1f4788;
+    color: #63b1ff;
+}
+
+.sport-badge.cbb {
+    background-color: #2d5a3d;
+    color: #4caf50;
+}
+
+.sport-badge.pga {
+    background-color: #4a3a1a;
+    color: #ffa500;
+}
+
+.edge-badge {
+    background-color: var(--highlight);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.pick-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.pick-details {
+    background-color: var(--secondary);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+.pick-details strong {
+    color: var(--text);
+}
+
+.pick-reasoning {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+
+/* Performance Section */
+.performance {
+    background-color: var(--primary);
+    padding: 4rem 0;
+}
+
+.performance-table {
+    background-color: var(--secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: var(--accent);
+    padding: 1rem;
+    text-align: left;
+    font-weight: bold;
+    color: var(--success);
+}
+
+table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--accent);
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr:hover {
+    background-color: var(--accent);
+}
+
+.chart-placeholder {
+    background-color: var(--secondary);
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--text-dim);
+}
+
+/* Subscribe Section */
+.subscribe {
+    padding: 4rem 0;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.pricing-card {
+    background-color: var(--primary);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--success);
+}
+
+.pricing-card.featured {
+    border-color: var(--highlight);
+    background-color: var(--secondary);
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--highlight);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 3rem;
+    color: var(--success);
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.price span {
+    font-size: 1rem;
+    color: var(--text-dim);
+}
+
+.features {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.features li {
+    padding: 0.5rem 0;
+    color: var(--text-dim);
+}
+
+.subscribe-btn {
+    background-color: var(--accent);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.subscribe-btn:hover {
+    background-color: var(--highlight);
+    border-color: var(--highlight);
+}
+
+.subscribe-btn.featured-btn {
+    background-color: var(--highlight);
+    border-color: var(--highlight);
+}
+
+.subscribe-btn.featured-btn:hover {
+    background-color: #ff5a7e;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary);
+    border-top: 1px solid var(--accent);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-dim);
+}
+
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--success);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+}
