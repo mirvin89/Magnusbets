@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function PricingSection() {
   const plans = [
     {
@@ -79,15 +81,16 @@ export default function PricingSection() {
               ))}
             </ul>
 
-            <button
-              className={`w-full py-3 rounded-lg font-bold transition-all duration-300 ${
+            <Link
+              href="/checkout"
+              className={`block w-full py-3 rounded-lg font-bold transition-all duration-300 text-center ${
                 plan.featured
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-600 hover:to-blue-700 shadow-lg hover:shadow-xl'
                   : 'border border-slate-600 text-gray-300 hover:border-slate-500 hover:text-white'
               }`}
             >
               {plan.cta}
-            </button>
+            </Link>
           </div>
         </div>
       ))}
