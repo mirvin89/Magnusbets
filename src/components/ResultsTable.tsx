@@ -13,25 +13,12 @@ export default function ResultsTable() {
   const [results, setResults] = useState<Result[]>([]);
 
   useEffect(() => {
-    // Load from CSV – replace with your loader (raw GitHub CSV)
-    const csvUrl = \'https://raw.githubusercontent.com/mirvin89/Magnusbets/main/paper_trades.csv\';
-    fetch(csvUrl)
-      .then(res => res.text())
-      .then(csv => {
-        // Simple CSV parse – aggregate for raspicks style
-        const lines = csv.split(\'\\n\').slice(1); // Skip header
-        const summary = [
-          { period: \'Last Month\', record: \'54-46\', units: \'+$427\', winrate: \'54%\' },
-          { period: \'3 Seasons\', record: \'1,200-1,000\', units: \'+38% ROI\', winrate: \'55%\' },
-          { period: \'Spreads Only\', record: \'320-260\', units: \'+22% ROI\', winrate: \'55%\' },
-        ];
-        setResults(summary);
-      })
-      .catch(() => setResults([
-        { period: \'Last Month\', record: \'54-46\', units: \'+$427\', winrate: \'54%\' },
-        { period: \'3 Seasons\', record: \'1,200-1,000\', units: \'+38% ROI\', winrate: \'55%\' },
-        { period: \'Spreads Only\', record: \'320-260\', units: \'+22% ROI\', winrate: \'55%\' },
-      ]));
+    const summary = [
+      { period: 'Last Month', record: '54-46', units: '+$427', winrate: '54%' },
+      { period: '3 Seasons', record: '1,200-1,000', units: '+38% ROI', winrate: '55%' },
+      { period: 'Spreads Only', record: '320-260', units: '+22% ROI', winrate: '55%' },
+    ];
+    setResults(summary);
   }, []);
 
   return (
