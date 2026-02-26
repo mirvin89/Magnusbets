@@ -29,10 +29,8 @@ export default function CheckoutPage() {
         return
       }
 
-      const stripe = await stripePromise
-      if (!stripe) throw new Error('Stripe not loaded')
-
-      await stripe.redirectToCheckout({ sessionId })
+      // Redirect to Stripe Checkout
+      window.location.href = `https://checkout.stripe.com/pay/${sessionId}`
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Checkout failed')
       setLoading(false)
