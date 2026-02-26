@@ -55,15 +55,15 @@ export default function CheckoutPage() {
         )}
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Monthly */}
+          {/* Daily */}
           <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-8 hover:border-slate-600/50 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-white mb-2">Monthly</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">Daily</h3>
             <div className="mb-6">
-              <span className="text-5xl font-bold text-white">$29</span>
-              <span className="text-gray-400">/mo</span>
+              <span className="text-5xl font-bold text-white">$4.99</span>
+              <span className="text-gray-400">/day</span>
             </div>
             <button
-              onClick={() => handleCheckout('price_monthly')}
+              onClick={() => handleCheckout('price_1T57i1JWyTHPmSUHjPnKGkzc')}
               disabled={loading}
               className="w-full py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded-lg transition-all duration-300 disabled:opacity-50"
             >
@@ -71,18 +71,18 @@ export default function CheckoutPage() {
             </button>
           </div>
 
-          {/* Quarterly - Featured */}
+          {/* Weekly - Featured */}
           <div className="relative border-2 border-cyan-500 bg-slate-800/80 rounded-xl p-8 md:scale-105 shadow-2xl shadow-cyan-500/20">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-1 rounded-full text-xs font-bold">
               BEST VALUE
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Quarterly</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">Weekly</h3>
             <div className="mb-6">
-              <span className="text-5xl font-bold text-white">$74</span>
-              <span className="text-gray-400">/3mo</span>
+              <span className="text-5xl font-bold text-white">$24.99</span>
+              <span className="text-gray-400">/week</span>
             </div>
             <button
-              onClick={() => handleCheckout('price_quarterly')}
+              onClick={() => handleCheckout('price_1T57hXJWyTHPmSUHeTrfbV9c')}
               disabled={loading}
               className="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold rounded-lg transition-all duration-300 disabled:opacity-50"
             >
@@ -90,15 +90,15 @@ export default function CheckoutPage() {
             </button>
           </div>
 
-          {/* Annual */}
+          {/* Monthly */}
           <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-8 hover:border-slate-600/50 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-white mb-2">Annual</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">Monthly</h3>
             <div className="mb-6">
-              <span className="text-5xl font-bold text-white">$249</span>
-              <span className="text-gray-400">/year</span>
+              <span className="text-5xl font-bold text-white">$39.99</span>
+              <span className="text-gray-400">/month</span>
             </div>
             <button
-              onClick={() => handleCheckout('price_annual')}
+              onClick={() => handleCheckout('price_1T1Wf1JWyTHPmSUH4yDF2tYh')}
               disabled={loading}
               className="w-full py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded-lg transition-all duration-300 disabled:opacity-50"
             >
