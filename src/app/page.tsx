@@ -1,3 +1,4 @@
+/* MagnusBets v2 */
 import Navbar2 from '@/components/Navbar2';
 import Hero2 from '@/components/Hero2';
 import PicksGrid2 from '@/components/PicksGrid2';
