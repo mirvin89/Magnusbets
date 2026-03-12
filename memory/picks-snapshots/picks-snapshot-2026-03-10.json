@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-03-10T23:00:09.999030",
+  "date": "2026-03-10",
+  "summary": {
+    "total": 69,
+    "wins": 39,
+    "losses": 28,
+    "pending": 2,
+    "pnl": 839.0,
+    "win_rate": 58.2
+  },
+  "by_sport": {
+    "NBA": {
+      "total": 52,
+      "wins": 30,
+      "losses": 20,
+      "pending": 2,
+      "pnl": 823.0,
+      "win_rate": 60.0
+    },
+    "CBB": {
+      "total": 17,
+      "wins": 9,
+      "losses": 8,
+      "pending": 0,
+      "pnl": 16.0,
+      "win_rate": 52.9
+    }
+  },
+  "yesterday": {
+    "date": "2026-03-09",
+    "record": "2-1",
+    "pnl": 95.0,
+    "total_picks": 3
+  },
+  "pending_picks": [
+    {
+      "Date": "2026-03-10",
+      "Sport": "NBA",
+      "Home Team": "Sacramento Kings",
+      "Away Team": "Indiana Pacers",
+      "Bet Type": "Total",
+      "Bet Pick": "OVER 236.5",
+      "Odds": "-110.0",
+      "Win/Loss": "",
+      "Profit": "",
+      "date": "",
+      "sport": "",
+      "game": "",
+      "pick": "",
+      "line": "",
+      "odds": "",
+      "result": "",
+      "P&L": "",
+      "notes": "edge 16.3pp"
+    },
+    {
+      "Date": "2026-03-10",
+      "Sport": "NBA",
+      "Home Team": "Atlanta Hawks",
+      "Away Team": "Dallas Mavericks",
+      "Bet Type": "Total",
+      "Bet Pick": "OVER 239.5",
+      "Odds": "-112.0",
+      "Win/Loss": "",
+      "Profit": "",
+      "date": "",
+      "sport": "",
+      "game": "",
+      "pick": "",
+      "line": "",
+      "odds": "",
+      "result": "",
+      "P&L": "",
+      "notes": "edge 15.1pp"
+    }
+  ],
+  "data_integrity": "OK"
+}
