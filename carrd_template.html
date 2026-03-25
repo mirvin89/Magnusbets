@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagnusBets – AI‑Powered Sports Picks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #f1f5f9; }
+        .hero-gradient { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .card-bg { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid #334155; }
+        .btn-primary { background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%); }
+        .btn-primary:hover { background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%); }
+        .stat-number { font-size: 3rem; font-weight: 800; line-height: 1; }
+        .picks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="py-4 px-6 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <span class="text-blue-400">Magnus</span><span class="text-slate-300">Bets</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="#pricing" class="text-slate-300 hover:text-white">Pricing</a>
+                <a href="#picks" class="text-slate-300 hover:text-white">Today’s Picks</a>
+                <a href="#performance" class="text-slate-300 hover:text-white">Performance</a>
+                <a href="#subscribe" class="px-4 py-2 btn-primary rounded-lg font-semibold">Subscribe Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-gradient py-20 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                <span class="text-white">AI‑Powered Sports Picks</span><br>
+                <span class="text-blue-400">That Actually Win</span>
+            </h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-12">
+                Get daily top plays from our machine‑learning models across NBA, MLB, CBB, and PGA.
+                We bet our own money—so you know the picks are real.
+            </p>
+            <div class="flex flex-wrap justify-center gap-8 mb-16">
+                <div class="text-center">
+                    <div class="stat-number text-green-400">53.5%</div>
+                    <div class="text-slate-400">Win Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number text-blue-400">+$277</div>
+                    <div class="text-slate-400">Total Profit</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number text-yellow-400">127</div>
+                    <div class="text-slate-400">Picks Tracked</div>
+                </div>
+            </div>
+            <a href="#subscribe" class="inline-block px-8 py-4 btn-primary rounded-xl text-xl font-bold shadow-2xl">
+                Start Winning Today – $29/month
+            </a>
+        </div>
+    </section>
+
+    <!-- Today’s Picks -->
+    <section id="picks" class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-2 text-white">Today’s Top Plays</h2>
+            <p class="text-slate-400 mb-8">Updated daily at 11 AM ET. All plays are tracked live.</p>
+            <div class="picks-grid">
+                <!-- Picks will be inserted here via CapperTek embed -->
+                <div class="card-bg rounded-xl p-6">
+                    <div class="text-slate-400 mb-2">NBA • Total</div>
+                    <div class="text-xl font-semibold mb-1">Mavericks @ Nuggets OVER 244.5</div>
+                    <div class="text-slate-300 mb-4">Edge: +16.0pp | Odds: -112</div>
+                    <div class="text-sm text-slate-500">Game starts 7:30 PM ET</div>
+                </div>
+                <div class="card-bg rounded-xl p-6">
+                    <div class="text-slate-400 mb-2">NBA • Total</div>
+                    <div class="text-xl font-semibold mb-1">Bucks @ Trail Blazers OVER 226.5</div>
+                    <div class="text-slate-300 mb-4">Edge: +16.0pp | Odds: -105</div>
+                    <div class="text-sm text-slate-500">Game starts 7:00 PM ET</div>
+                </div>
+                <div class="card-bg rounded-xl p-6">
+                    <div class="text-slate-400 mb-2">NBA • Total</div>
+                    <div class="text-xl font-semibold mb-1">Heat @ Cavaliers OVER 242.5</div>
+                    <div class="text-slate-300 mb-4">Edge: +16.0pp | Odds: -115</div>
+                    <div class="text-sm text-slate-500">Game starts 7:00 PM ET</div>
+                </div>
+                <div class="card-bg rounded-xl p-6">
+                    <div class="text-slate-400 mb-2">NBA • Total</div>
+                    <div class="text-xl font-semibold mb-1">Rockets @ Timberwolves OVER 224.5</div>
+                    <div class="text-slate-300 mb-4">Edge: +16.0pp | Odds: -105</div>
+                    <div class="text-sm text-slate-500">Game starts 8:00 PM ET</div>
+                </div>
+            </div>
+            <p class="text-slate-500 text-sm mt-8">All picks are tracked in our public spreadsheet. Edge = model‑implied probability advantage over market.</p>
+        </div>
+    </section>
+
+    <!-- Performance Table -->
+    <section id="performance" class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8 text-white">Performance by Sport</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="pb-4 text-slate-400 font-semibold">Sport</th>
+                            <th class="pb-4 text-slate-400 font-semibold">Record</th>
+                            <th class="pb-4 text-slate-400 font-semibold">Win Rate</th>
+                            <th class="pb-4 text-slate-400 font-semibold">Profit</th>
+                            <th class="pb-4 text-slate-400 font-semibold">ROI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-slate-800/50">
+                            <td class="py-4 text-white">NBA</td>
+                            <td class="py-4 text-slate-300">41‑34</td>
+                            <td class="py-4 text-slate-300">54.7%</td>
+                            <td class="py-4 text-green-400 font-semibold">+$231</td>
+                            <td class="py-4 text-slate-300">+8.2%</td>
+                        </tr>
+                        <tr class="border-b border-slate-800/50">
+                            <td class="py-4 text-white">CBB</td>
+                            <td class="py-4 text-slate-300">27‑26</td>
+                            <td class="py-4 text-slate-300">50.9%</td>
+                            <td class="py-4 text-green-400 font-semibold">+$46</td>
+                            <td class="py-4 text-slate-300">+1.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 text-white">Overall</td>
+                            <td class="py-4 text-slate-300">68‑59</td>
+                            <td class="py-4 text-slate-300">53.5%</td>
+                            <td class="py-4 text-green-400 font-semibold">+$277</td>
+                            <td class="py-4 text-slate-300">+6.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / CTA -->
+    <section id="subscribe" class="py-20 px-6 hero-gradient">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">Get Every Pick for $29/month</h2>
+            <p class="text-slate-300 text-xl mb-12">No hidden fees. Cancel anytime.</p>
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="card-bg rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-2">Monthly</h3>
+                    <div class="text-5xl font-bold my-6">$29</div>
+                    <ul class="text-slate-300 space-y-3 mb-8">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> All sport picks</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> Daily email</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> Live tracker access</li>
+                    </ul>
+                    <a href="https://cappertek.com/magnusbets" class="block w-full py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold">Subscribe</a>
+                </div>
+                <div class="card-bg rounded-2xl p-8 border-2 border-blue-500">
+                    <div class="inline-block px-4 py-1 bg-blue-500 rounded-full text-sm font-bold mb-4">Most Popular</div>
+                    <h3 class="text-2xl font-bold mb-2">Quarterly</h3>
+                    <div class="text-5xl font-bold my-6">$74</div>
+                    <div class="text-slate-400 mb-4">Save 15%</div>
+                    <ul class="text-slate-300 space-y-3 mb-8">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> Everything in Monthly</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> Weekly strategy call</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> Model deep‑dives</li>
+                    </ul>
+                    <a href="https://cappertek.com/magnusbets" class="block w-full py-3 btn-primary rounded-lg font-bold">Subscribe</a>
+                </div>
+                <div class="card-bg rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-2">Yearly</h3>
+                    <div class="text-5xl font-bold my-6">$249</div>
+                    <div class="text-slate-400 mb-4">Save 30%</div>
+                    <ul class="text-slate-300 space-y-3 mb-8">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> Everything in Quarterly</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> Priority support</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i> Custom model requests</li>
+                    </ul>
+                    <a href="https://cappertek.com/magnusbets" class="block w-full py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold">Subscribe</a>
+                </div>
+            </div>
+            <p class="text-slate-500 text-sm">All subscriptions are handled securely via CapperTek. No Stripe account required.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-2xl font-bold mb-4 md:mb-0">
+                <span class="text-blue-400">Magnus</span><span class="text-slate-300">Bets</span>
+            </div>
+            <div class="text-slate-500 text-sm">
+                &copy; 2026 MagnusBets. All picks are for entertainment purposes only. Bet responsibly.
+            </div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="https://x.com/MagnusBets" class="text-slate-400 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="mailto:support@magnusbets.com" class="text-slate-400 hover:text-white"><i class="fas fa-envelope fa-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CapperTek embed script (example) -->
+    <script>
+        // CapperTek embed would go here
+    </script>
+</body>
+</html>
