@@ -1,10 +1,10 @@
 {
   "overall": {
-    "record": "75-66",
+    "record": "75-67",
     "wins": 75,
-    "losses": 66,
-    "profit": 202.0,
-    "win_rate": 53.2
+    "losses": 67,
+    "profit": 22.0,
+    "win_rate": 52.8
   },
   "sports": {
     "NBA": {
@@ -22,21 +22,14 @@
       "win_rate": 50.9
     },
     "MLB": {
-      "record": "2-2",
+      "record": "2-3",
       "wins": 2,
-      "losses": 2,
-      "profit": -77.0,
-      "win_rate": 50.0
+      "losses": 3,
+      "profit": -257.0,
+      "win_rate": 40.0
     }
   },
   "recent_results": [
-    {
-      "date": "2026-03-26",
-      "sport": "NBA",
-      "pick": "OVER 222.5",
-      "result": "L",
-      "profit": -108.0
-    },
     {
       "date": "2026-03-26",
       "sport": "MLB",
@@ -64,7 +57,14 @@
       "pick": "Seattle Mariners",
       "result": "L",
       "profit": -186.0
+    },
+    {
+      "date": "2026-03-27",
+      "sport": "MLB",
+      "pick": "Seattle Mariners ML",
+      "result": "L",
+      "profit": -180.0
     }
   ],
-  "updated_at": "2026-03-27T17:53:33.175854"
+  "updated_at": "2026-03-27T17:54:05.387844"
 }
