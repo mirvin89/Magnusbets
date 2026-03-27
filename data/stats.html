@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagnusBets Record</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .container {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid #374151;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            text-align: center;
+            color: #60a5fa;
+            font-weight: 700;
+        }
+        .overall {
+            background: #1e3a8a;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            text-align: center;
+            border: 1px solid #3b82f6;
+        }
+        .overall .record {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .overall .profit {
+            font-size: 24px;
+            margin-top: 8px;
+            color: #10b981;
+        }
+        .sports {
+            margin-bottom: 24px;
+        }
+        .sports h2, .recent h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sport-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #111827;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid;
+        }
+        .sport-row.NBA {
+            border-left-color: #3b82f6;
+        }
+        .sport-row.CBB {
+            border-left-color: #8b5cf6;
+        }
+        .sport-row.MLB {
+            border-left-color: #10b981;
+        }
+        .sport-row.PGA {
+            border-left-color: #f59e0b;
+        }
+        .sport-name {
+            font-weight: 600;
+        }
+        .sport-record {
+            font-weight: 500;
+        }
+        .sport-profit {
+            font-weight: bold;
+        }
+        .profit-positive {
+            color: #10b981;
+        }
+        .profit-negative {
+            color: #ef4444;
+        }
+        .recent-game {
+            padding: 12px;
+            background: #111827;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .recent-game.win {
+            border-left: 4px solid #10b981;
+        }
+        .recent-game.loss {
+            border-left: 4px solid #ef4444;
+        }
+        .update-time {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 MagnusBets Live Record</h1>
+        
+        <div class="overall">
+            <div class="record">75-66</div>
+            <div class="profit">$+202.00</div>
+            <div style="margin-top: 8px; font-size: 14px;">53.2% win rate</div>
+        </div>
+        
+        <div class="sports">
+            <h2>By Sport</h2>
+            
+            <div class="sport-row NBA">
+                <span class="sport-name">NBA</span>
+                <span class="sport-record">44-36</span>
+                <span class="sport-profit profit-positive">$+470.00</span>
+            </div>
+            <div class="sport-row CBB">
+                <span class="sport-name">CBB</span>
+                <span class="sport-record">29-28</span>
+                <span class="sport-profit profit-negative">$-191.00</span>
+            </div>
+            <div class="sport-row MLB">
+                <span class="sport-name">MLB</span>
+                <span class="sport-record">2-2</span>
+                <span class="sport-profit profit-negative">$-77.00</span>
+            </div>
+        </div>
+        
+        <div class="recent">
+            <h2>Recent Results</h2>
+            
+            <div class="recent-game l">
+                <span>NBA • OVER 222.5</span>
+                <span class="profit-negative">L $-108.00</span>
+            </div>
+            <div class="recent-game l">
+                <span>MLB • San Diego Padres ML</span>
+                <span class="profit-negative">L $-100.00</span>
+            </div>
+            <div class="recent-game w">
+                <span>MLB • St. Louis Cardinals ML</span>
+                <span class="profit-positive">W $+109.00</span>
+            </div>
+            <div class="recent-game w">
+                <span>MLB • Philadelphia Phillies</span>
+                <span class="profit-positive">W $+100.00</span>
+            </div>
+            <div class="recent-game l">
+                <span>MLB • Seattle Mariners</span>
+                <span class="profit-negative">L $-186.00</span>
+            </div>
+        </div>
+        
+        <div class="update-time">
+            Updated 2026-03-27 16:55 ET • 
+            <a href="https://magnusbets.com" target="_blank">View Full Site</a>
+        </div>
+    </div>
+</body>
+</html>
