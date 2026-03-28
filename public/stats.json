@@ -1,9 +1,9 @@
 {
   "overall": {
-    "record": "75-67",
-    "wins": 75,
-    "losses": 67,
-    "profit": 22.0,
+    "record": "76-68",
+    "wins": 76,
+    "losses": 68,
+    "profit": 12.0,
     "win_rate": 52.8
   },
   "sports": {
@@ -15,11 +15,11 @@
       "win_rate": 55.0
     },
     "CBB": {
-      "record": "29-28",
-      "wins": 29,
-      "losses": 28,
-      "profit": -191.0,
-      "win_rate": 50.9
+      "record": "30-29",
+      "wins": 30,
+      "losses": 29,
+      "profit": -201.0,
+      "win_rate": 50.8
     },
     "MLB": {
       "record": "2-3",
@@ -30,20 +30,6 @@
     }
   },
   "recent_results": [
-    {
-      "date": "2026-03-26",
-      "sport": "MLB",
-      "pick": "San Diego Padres ML",
-      "result": "L",
-      "profit": -100.0
-    },
-    {
-      "date": "2026-03-26",
-      "sport": "MLB",
-      "pick": "St. Louis Cardinals ML",
-      "result": "W",
-      "profit": 109.0
-    },
     {
       "date": "2026-03-26",
       "sport": "MLB",
@@ -64,7 +50,21 @@
       "pick": "Seattle Mariners ML",
       "result": "L",
       "profit": -180.0
+    },
+    {
+      "date": "2026-03-27",
+      "sport": "CBB",
+      "pick": "-6.5",
+      "result": "L",
+      "profit": -110.0
+    },
+    {
+      "date": "2026-03-27",
+      "sport": "CBB",
+      "pick": "OVER 141.5",
+      "result": "W",
+      "profit": 100.0
     }
   ],
-  "updated_at": "2026-03-27T17:54:05.387844"
+  "updated_at": "2026-03-27T22:00:58.895495"
 }
