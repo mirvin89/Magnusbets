@@ -1,10 +1,10 @@
 {
   "overall": {
-    "record": "78-71",
+    "record": "78-72",
     "wins": 78,
-    "losses": 71,
-    "profit": -123.0,
-    "win_rate": 52.3
+    "losses": 72,
+    "profit": -233.0,
+    "win_rate": 52.0
   },
   "sports": {
     "NBA": {
@@ -15,11 +15,11 @@
       "win_rate": 54.2
     },
     "CBB": {
-      "record": "31-29",
+      "record": "31-30",
       "wins": 31,
-      "losses": 29,
-      "profit": -101.0,
-      "win_rate": 51.7
+      "losses": 30,
+      "profit": -211.0,
+      "win_rate": 50.8
     },
     "MLB": {
       "record": "2-4",
@@ -30,13 +30,6 @@
     }
   },
   "recent_results": [
-    {
-      "date": "2026-03-27",
-      "sport": "NBA",
-      "pick": "OVER 239.5",
-      "result": "L",
-      "profit": -110.0
-    },
     {
       "date": "2026-03-27",
       "sport": "NBA",
@@ -61,10 +54,17 @@
     {
       "date": "2026-03-27",
       "sport": "CBB",
+      "pick": "OVER 140.5",
+      "result": "L",
+      "profit": -110.0
+    },
+    {
+      "date": "2026-03-27",
+      "sport": "CBB",
       "pick": "UNDER 172.5",
       "result": "W",
       "profit": 100.0
     }
   ],
-  "updated_at": "2026-03-28T01:55:17.494144"
+  "updated_at": "2026-03-28T04:03:10.415589"
 }
