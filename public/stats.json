@@ -1,18 +1,18 @@
 {
   "overall": {
-    "record": "78-72",
-    "wins": 78,
-    "losses": 72,
-    "profit": -233.0,
-    "win_rate": 52.0
+    "record": "81-76",
+    "wins": 81,
+    "losses": 76,
+    "profit": -448.0,
+    "win_rate": 51.6
   },
   "sports": {
     "NBA": {
-      "record": "45-38",
+      "record": "45-40",
       "wins": 45,
-      "losses": 38,
-      "profit": 355.0,
-      "win_rate": 54.2
+      "losses": 40,
+      "profit": 130.0,
+      "win_rate": 52.9
     },
     "CBB": {
       "record": "31-30",
@@ -22,49 +22,49 @@
       "win_rate": 50.8
     },
     "MLB": {
-      "record": "2-4",
-      "wins": 2,
-      "losses": 4,
-      "profit": -377.0,
-      "win_rate": 33.3
+      "record": "5-6",
+      "wins": 5,
+      "losses": 6,
+      "profit": -367.0,
+      "win_rate": 45.5
     }
   },
   "recent_results": [
     {
-      "date": "2026-03-27",
+      "date": "2026-03-28",
+      "sport": "MLB",
+      "pick": "Milwaukee Brewers ML",
+      "result": "W",
+      "profit": 100.0
+    },
+    {
+      "date": "2026-03-28",
       "sport": "NBA",
-      "pick": "OVER 232.5",
-      "result": "W",
-      "profit": 100.0
-    },
-    {
-      "date": "2026-03-27",
-      "sport": "CBB",
-      "pick": "-6.5",
+      "pick": "OVER 236.5",
       "result": "L",
       "profit": -110.0
     },
     {
-      "date": "2026-03-27",
-      "sport": "CBB",
-      "pick": "OVER 141.5",
-      "result": "W",
-      "profit": 100.0
-    },
-    {
-      "date": "2026-03-27",
-      "sport": "CBB",
-      "pick": "OVER 140.5",
+      "date": "2026-03-28",
+      "sport": "NBA",
+      "pick": "OVER 245.5",
       "result": "L",
-      "profit": -110.0
+      "profit": -115.0
     },
     {
-      "date": "2026-03-27",
-      "sport": "CBB",
-      "pick": "UNDER 172.5",
+      "date": "2026-03-28",
+      "sport": "MLB",
+      "pick": "San Diego Padres ML",
       "result": "W",
       "profit": 100.0
+    },
+    {
+      "date": "2026-03-28",
+      "sport": "MLB",
+      "pick": "Seattle Mariners ML",
+      "result": "L",
+      "profit": -181.0
     }
   ],
-  "updated_at": "2026-03-28T12:36:37.382677"
+  "updated_at": "2026-03-28T22:06:57.737348"
 }
