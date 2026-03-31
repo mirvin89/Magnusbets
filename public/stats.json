@@ -1,10 +1,10 @@
 {
   "overall": {
-    "record": "83-79",
-    "wins": 83,
+    "record": "85-79",
+    "wins": 85,
     "losses": 79,
-    "profit": -806.0,
-    "win_rate": 51.2
+    "profit": -588.0,
+    "win_rate": 51.8
   },
   "sports": {
     "NBA": {
@@ -22,28 +22,14 @@
       "win_rate": 51.6
     },
     "MLB": {
-      "record": "6-9",
-      "wins": 6,
+      "record": "8-9",
+      "wins": 8,
       "losses": 9,
-      "profit": -825.0,
-      "win_rate": 40.0
+      "profit": -607.0,
+      "win_rate": 47.1
     }
   },
   "recent_results": [
-    {
-      "date": "2026-03-29",
-      "sport": "MLB",
-      "pick": "Philadelphia Phillies ML",
-      "result": "L",
-      "profit": -152.0
-    },
-    {
-      "date": "2026-03-29",
-      "sport": "MLB",
-      "pick": "Milwaukee Brewers ML",
-      "result": "W",
-      "profit": 100.0
-    },
     {
       "date": "2026-03-29",
       "sport": "MLB",
@@ -55,8 +41,8 @@
       "date": "2026-03-29",
       "sport": "MLB",
       "pick": "Seattle Mariners ML",
-      "result": "L",
-      "profit": -156.0
+      "result": "W",
+      "profit": 100.0
     },
     {
       "date": "2026-03-29",
@@ -64,7 +50,21 @@
       "pick": "Michigan -7.5",
       "result": "W",
       "profit": 100.0
+    },
+    {
+      "date": "2026-03-30",
+      "sport": "MLB",
+      "pick": "Kansas City Royals ML",
+      "result": "W",
+      "profit": 100.0
+    },
+    {
+      "date": "2026-03-30",
+      "sport": "MLB",
+      "pick": "Miami Marlins ML",
+      "result": "L",
+      "profit": -138.0
     }
   ],
-  "updated_at": "2026-03-29T19:59:39.806160"
+  "updated_at": "2026-03-31T12:02:29.112916"
 }
