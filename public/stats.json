@@ -1,10 +1,10 @@
 {
   "overall": {
-    "record": "86-79",
-    "wins": 86,
-    "losses": 79,
-    "profit": -488.0,
-    "win_rate": 52.1
+    "record": "89-80",
+    "wins": 89,
+    "losses": 80,
+    "profit": -302.0,
+    "win_rate": 52.7
   },
   "sports": {
     "NBA": {
@@ -22,49 +22,49 @@
       "win_rate": 51.6
     },
     "MLB": {
-      "record": "9-9",
-      "wins": 9,
-      "losses": 9,
-      "profit": -507.0,
-      "win_rate": 50.0
+      "record": "12-10",
+      "wins": 12,
+      "losses": 10,
+      "profit": -321.0,
+      "win_rate": 54.5
     }
   },
   "recent_results": [
     {
-      "date": "2026-03-29",
-      "sport": "MLB",
-      "pick": "Seattle Mariners ML",
-      "result": "W",
-      "profit": 100.0
-    },
-    {
-      "date": "2026-03-29",
-      "sport": "CBB",
-      "pick": "Michigan -7.5",
-      "result": "W",
-      "profit": 100.0
-    },
-    {
-      "date": "2026-03-30",
-      "sport": "MLB",
-      "pick": "Kansas City Royals ML",
-      "result": "W",
-      "profit": 100.0
-    },
-    {
-      "date": "2026-03-30",
+      "date": "2026-03-31",
       "sport": "MLB",
       "pick": "Miami Marlins ML",
-      "result": "L",
-      "profit": -138.0
+      "result": "W",
+      "profit": 100.0
     },
     {
       "date": "2026-03-30",
       "sport": "MLB",
       "pick": "Seattle Mariners ML",
+      "result": "W",
+      "profit": 100.0
+    },
+    {
+      "date": "2026-03-31",
+      "sport": "MLB",
+      "pick": "Chicago Cubs ML",
+      "result": "L",
+      "profit": -142.0
+    },
+    {
+      "date": "2026-03-31",
+      "sport": "MLB",
+      "pick": "St. Louis Cardinals ML",
+      "result": "W",
+      "profit": 128.0
+    },
+    {
+      "date": "2026-03-31",
+      "sport": "MLB",
+      "pick": "Arizona Diamondbacks ML",
       "result": "W",
       "profit": 100.0
     }
   ],
-  "updated_at": "2026-03-31T15:57:57.294879"
+  "updated_at": "2026-04-01T12:01:13.670650"
 }
